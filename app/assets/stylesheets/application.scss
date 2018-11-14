@@ -146,8 +146,10 @@ h2 span {
 }
 
 .mcWraps {
+  height:inherit;
   display:flex;
   justify-content: center;
+  align-items: center;
 }
 
 .message {
