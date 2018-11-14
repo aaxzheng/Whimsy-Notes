@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
   const store = configureStore(preloadedState);
-  // delete window.currentUser;
   // TESTING
   window.getState = store.getState;
   window.dispatch = store.dispatch;
