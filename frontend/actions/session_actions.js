@@ -29,17 +29,27 @@ export const receiveErrors = (errors) => {
 export const login = (user) => dispatch => {
   return APIUtil.login(user).then((user2) => {
     dispatch(receiveCurrentUser(user2));
-  });
+  }).fail((errors) => {dispatch(receiveErrors(errors.responseJSON))});
 };
 
 export const logout = () => dispatch => {
   return APIUtil.logout().then(() => {
     dispatch(logoutCurrentUser());
-  });
+  }).fail((errors) => {dispatch(receiveErrors(errors.responseJSON))});
 };
 
 export const signup = (user) => dispatch => {
   return APIUtil.signup(user).then((resp) => {
     dispatch(receiveCurrentUser(resp));
+  }).fail((errors) => {dispatch(receiveErrors(errors.responseJSON))});
+};
+
+export const demoLogin = () => dispatch => {
+  const user = {
+    username: "demoman",
+    password: "invisible"
+  };
+  return APIUtil.login(user).then((user) => {
+    dispatch(receiveCurrentUser(user));
   });
 };

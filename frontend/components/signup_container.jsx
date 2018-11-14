@@ -1,6 +1,6 @@
 import SessionForm from './session_form';
 import { connect } from 'react-redux';
-import { signup } from '../actions/session_actions';
+import { signup, demoLogin } from '../actions/session_actions';
 
 const msp = (state, ownProps) => {
   return {
@@ -13,6 +13,9 @@ const mdp = (dispatch, ownProps) => {
   return {
     processForm: (user) => {
       return dispatch(signup(user));
+    },
+    demoLogin: () => {
+      return dispatch(demoLogin());
     }
   };
 };

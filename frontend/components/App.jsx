@@ -7,7 +7,7 @@ import GreetingContainer from './greeting_container';
 
 
 const App = () => (
-  <div>
+  <div className="main">
     <h1>Whimsy Notes App Page</h1>
     <GreetingContainer />
     <Route exact path="/login" component={LoginFormContainer} />
