@@ -41,9 +41,18 @@ class SessionForm extends React.Component {
 
 
     if (this.props.errors.includes("Username can't be blank")) {
-      errorMsg = this.props.errors;
+      errorMsg = ["This is a required field"];
+      if (this.props.errors.includes("Password can't be blank")) {
+        errorMsg.push("This is a required field");
+      } else {
+        errorMsg.push(this.props.errors[1]);
+      }
     } else {
-      errorMsg.push(this.props.errors);
+      if (this.props.errors.includes("Password can't be blank")) {
+        errorMsg.push("This is a required field");
+      } else {
+        errorMsg.push(this.props.errors);
+      }
     }
 
     return (
