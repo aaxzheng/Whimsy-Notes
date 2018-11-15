@@ -31,14 +31,14 @@ class SessionForm extends React.Component {
     let errorMsg = [null];
 
     if (this.props.formType === 'Sign In') {
-      path = <Link onClick={emptyErrors} className="log-link" to="/signup">Sign Up</Link>;
+      path = <Link  className="log-link" to="/signup">Sign Up</Link>;
       message = "Don't have an account?"
     } else {
-      path = <Link onClick={emptyErrors} className="log-link" to="/login">Sign In</Link>;
+      path = <Link  className="log-link" to="/login">Sign In</Link>;
       message = "Already have an account?"
     }
 
-    
+
 
     if (this.props.errors.includes("Username can't be blank")) {
       errorMsg = this.props.errors;
