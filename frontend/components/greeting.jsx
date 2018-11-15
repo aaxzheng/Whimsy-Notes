@@ -13,7 +13,7 @@ const Greeting = ({ loggedIn, currentUser, logout}) => {
       </>
     );
   } else {
-    greeting = <Redirect to="/"/>
+    greeting = (<h1>Not Logged</h1>);
   }
   return greeting;
 };

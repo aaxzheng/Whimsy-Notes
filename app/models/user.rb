@@ -3,9 +3,13 @@ class User < ApplicationRecord
 
 validates :username, :password_digest, :session_token, presence: true
 validates :username, uniqueness: true
-validates :password, presence:true, length: { minimum: 6 },allow_nil:true
+validates :password, presence:true, length: { minimum: 6, },allow_nil:true
 
 after_initialize :ensure_session_token
+
+has_many :notes
+has_many :notebooks
+
 
 def self.find_by_credentials(username, password)
   user = User.find_by(username: username)
