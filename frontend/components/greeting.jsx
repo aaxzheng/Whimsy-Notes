@@ -1,6 +1,6 @@
 import React from 'react';
 import { logout } from '../actions/session_actions';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
 
 const Greeting = ({ loggedIn, currentUser, logout}) => {
@@ -13,14 +13,7 @@ const Greeting = ({ loggedIn, currentUser, logout}) => {
       </>
     );
   } else {
-    greeting = (
-      <div>
-        <h1>Whimsy Notes App Page</h1>
-        <Link to="/signup">Sign up</Link>
-        <br></br>
-        <Link to="/login">Sign in</Link>
-      </div>
-    );
+    greeting = <Redirect to="/"/>
   }
   return greeting;
 };

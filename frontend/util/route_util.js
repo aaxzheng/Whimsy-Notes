@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Splash from '../components/splash/splash'
 
 const Auth = ({component: Component, path, loggedIn, exact}) => {
   return (
     <Route path={path} exact={exact} render={(props) => (
-    loggedIn ? <Redirect to="/" /> : <Component{...props} />
+    loggedIn ? <Redirect to="/greeting" /> : <Component{...props} />
   )} />);
 };
 
