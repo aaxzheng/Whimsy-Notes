@@ -62,9 +62,10 @@ a:visited {
   width:55%;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
   font-size: 15px;
+  margin: 0;
   padding: 0;
 }
 
@@ -433,4 +434,56 @@ a:visited {
 .first-break {
   border-width: 2px;
   border-style:solid;
+}
+
+.second-break {
+  border-width: 1px;
+}
+
+.copyright {
+  color:#888b8d;
+  font-size: 12px;
+  line-height: 21px;
+  width: 400px;
+  display:flex;
+  justify-content: flex-start;
+  margin:0;
+}
+
+.copyright-list {
+  display: flex;
+  justify-content: flex-end;
+  width:200px;
+  margin: 0;
+}
+
+.copyright-list li {
+  color:#888b8d;
+  font-size: 12px;
+  line-height: 21px;
+  padding: 0 5px 0 0;
+}
+
+.copyright-list li:hover {
+  color: #071010;
+}
+
+.copyright-div {
+  display:flex;
+  justify-content: space-between;
+}
+
+.session-div2 {
+  display: flex;
+  justify-content: space-between;
+  height:400px;
+  margin-top: 40px;
+  margin-left: 80px;
+  position: relative;
+}
+
+.session-move {
+  justify-content: flex-end;
+  position:absolute;
+  right:-175px;
 }
