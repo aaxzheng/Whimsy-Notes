@@ -38,12 +38,12 @@ class Info extends React.Component {
             <p className="first-blurb">Whimsy Notes helps you capture and organize ideas, projects, and to-do lists, so even the smallest things stay with you.</p>
           <Link className="first-sign" to="/signup">SIGN UP FOR FREE</Link>
           </h1>
-          <img className="first-img" src="/assets/homepage-hero-desktop.png"></img>
+          <img className="first-img" src="/homepage-hero-desktop.png"></img>
         </div>
       </div>
       <div className="second-body">
         <div className="second-img">
-          <img className="brain" src="/assets/homepage-focus.png"></img>
+          <img className="brain" src="/homepage-focus.png"></img>
           <h1 className="second-slogan">Focus on what matters most</h1>
         </div>
         <div className="second-text">
@@ -61,22 +61,22 @@ class Info extends React.Component {
         <div className="third-icons">
           <ul>
             <li>
-              <img src="/assets/sign-up.png"/>
+              <img src="/sign-up.png"/>
               <h3>SIGN UP</h3>
               <p>Create your free account and choose the plan that fits your needs.</p>
             </li>
             <li>
-              <img src="/assets/add-content.png"/>
+              <img src="/add-content.png"/>
               <h3>ADD CONTENT</h3>
               <p>Type notes, add attachments, clip web pages, or record memos. All in one place.</p>
             </li>
             <li>
-              <img src="/assets/find-everything.png"/>
+              <img src="/find-everything.png"/>
               <h3>FIND EVERYTHING</h3>
               <p>Organize your way. Use notebooks, tags, or our powerful search to find everything you need quickly.</p>
             </li>
             <li>
-              <img src="/assets/done.png"/>
+              <img src="/done.png"/>
               <h3>GET THINGS DONE</h3>
               <p>Manage projects, take meeting notes, set reminders, and edit documents.</p>
             </li>
