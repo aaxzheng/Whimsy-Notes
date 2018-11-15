@@ -20,19 +20,25 @@ class SessionForm extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors(this.props.errors);
+  }
 
   render() {
     let path;
     let message;
+
     let errorMsg = [null];
 
     if (this.props.formType === 'Sign In') {
-      path = <Link className="log-link" to="/signup">Sign Up</Link>;
+      path = <Link onClick={emptyErrors} className="log-link" to="/signup">Sign Up</Link>;
       message = "Don't have an account?"
     } else {
-      path = <Link className="log-link" to="/login">Sign In</Link>;
+      path = <Link onClick={emptyErrors} className="log-link" to="/login">Sign In</Link>;
       message = "Already have an account?"
     }
+
+    
 
     if (this.props.errors.includes("Username can't be blank")) {
       errorMsg = this.props.errors;

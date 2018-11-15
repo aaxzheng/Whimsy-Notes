@@ -36,7 +36,7 @@ class Info extends React.Component {
           <h1 className="first-intro">
             Feel organized without the effort
             <p className="first-blurb">Whimsy Notes helps you capture and organize ideas, projects, and to-do lists, so even the smallest things stay with you.</p>
-          <Link className="first-sign" to="/signup">Sign Up for Free</Link>
+          <Link className="first-sign" to="/signup">SIGN UP FOR FREE</Link>
           </h1>
           <img className="first-img" src="/assets/homepage-hero-desktop.png"></img>
         </div>

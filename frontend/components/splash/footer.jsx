@@ -43,39 +43,31 @@ class Footer extends React.Component {
                   <li>
                     <ul className="dud-lis">
                       <li><h6>COMMUNITY</h6></li>
-                      <li>Why Whimsy Notes</li>
-                      <li>Whimsy Notes Basic</li>
-                      <li>Whimsy Notes Premium</li>
-                      <li>Whimsy Notes Business</li>
-                      <li>Compare Plans</li>
-                      <li>Student Discount</li>
-                      <li>Download App</li>
+                      <li>Our Community</li>
+                      <li>Certified Consultants</li>
+                      <li>Developers</li>
+                      <li>Events</li>
+                      <li>Forum</li>
                     </ul>
                   </li>
 
                   <li>
                     <ul className="dud-lis">
                       <li><h6>SUPPORT</h6></li>
-                      <li>Why Whimsy Notes</li>
-                      <li>Whimsy Notes Basic</li>
-                      <li>Whimsy Notes Premium</li>
-                      <li>Whimsy Notes Business</li>
-                      <li>Compare Plans</li>
-                      <li>Student Discount</li>
-                      <li>Download App</li>
+                      <li>Help & Learning</li>
+                      <li>Troubleshooting</li>
+                      <li>Blog</li>
                     </ul>
                   </li>
 
                   <li>
                     <ul className="dud-lis">
                       <li><h6>COMPANY</h6></li>
-                      <li>Why Whimsy Notes</li>
-                      <li>Whimsy Notes Basic</li>
-                      <li>Whimsy Notes Premium</li>
-                      <li>Whimsy Notes Business</li>
-                      <li>Compare Plans</li>
-                      <li>Student Discount</li>
-                      <li>Download App</li>
+                      <li>About Us</li>
+                      <li>Press</li>
+                      <li>Careers</li>
+                      <li>Inclusion & Diversity</li>
+                      <li>Contact Us</li>
                     </ul>
                   </li>
 
