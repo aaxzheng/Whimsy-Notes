@@ -5,10 +5,11 @@ export const RECEIVE_NOTES = "RECEIVE_NOTES";
 export const REMOVE_NOTE = "REMOVE_NOTE";
 
 
-export const receiveNote = (note) => {
+export const receiveNote = ({note,tag_ids}) => {
   return {
     type: RECEIVE_NOTE,
     note,
+    tagIds: tag_ids,
   };
 };
 

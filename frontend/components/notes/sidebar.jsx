@@ -1,15 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class SideBar extends React.Component {
+  constructor (props) {
+    super(props);
+    this.user = this.props.user;
+  }
+
+
   componentDidMount() {
-    this.props.fetchNotes();
+    // this.props.fetchNote(13);
     // this.props.fetchNotebooks();
-    this.props.fetchNotebook(3);
+    // this.props.fetchNotebook(3);
   }
 
   render() {
     return (
-      <h1>Hello</h1>
+      <>
+      <div className="sidebar-body">
+        <section className="sidebar-header">
+          <div>
+            <span>{this.user.username}</span>
+          </div>
+        </section>
+        <button onClick={this.props.logout}>LOG OUT</button>
+      </div>
+      </>
     )
   }
 }

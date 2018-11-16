@@ -11,7 +11,7 @@ import Notes from './notes/notes';
 const App = () => (
   <div className="main">
     <AuthRoute exact path="/" component={Splash} />
-    <Route exact path="/test" component={Notes}/>
+    <ProtectedRoute exact path="/test" component={Notes}/>
     <ProtectedRoute exact path="/greeting" component={GreetingContainer} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />

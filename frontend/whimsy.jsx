@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import { Root } from './components/root';
 import { login, logout } from './actions/session_actions';
+import {fetchNotebook} from './util/notebook_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // TESTING
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchNotebook = fetchNotebook;
   window.login = login;
   window.logout = logout;
   // Derp

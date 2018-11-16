@@ -3,11 +3,12 @@ class Tag < ApplicationRecord
 
   belongs_to :user
 
-  has_many :tagged_notes,
+  has_many :tag_notes,
   foreign_key: :tag_id,
-  class_name: :TagNote
+  class_name: :TagNote,
+  inverse_of: :tag
 
   has_many :notes,
-  through: :tagged_notes,
+  through: :tag_notes,
   source: :note
 end
