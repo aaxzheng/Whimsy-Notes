@@ -71,8 +71,8 @@ class Footer extends React.Component {
                     </ul>
                   </li>
 
+                  <span className="session-links session-move"><Link className="splash-signup" to="/signup">Sign up</Link><span className="or">or</span><Link className="splash-login" to="/login">Log in</Link></span>
                 </ul>
-                <span className="session-links session-move"><Link className="splash-signup" to="/signup">Sign up</Link><span className="or">or</span><Link className="splash-login" to="/login">Log in</Link></span>
               </div>
 
 
