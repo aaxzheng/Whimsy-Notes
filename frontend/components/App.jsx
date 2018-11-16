@@ -10,7 +10,7 @@ import Splash from './splash/splash';
 const App = () => (
   <div className="main">
     <AuthRoute exact path="/" component={Splash} />
-    <Route exact path="/greeting" component={GreetingContainer} />
+    <ProtectedRoute exact path="/greeting" component={GreetingContainer} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
   </div>
