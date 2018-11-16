@@ -21,6 +21,10 @@ class FourthForm extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors(this.props.errors);
+  }
+
 
   render() {
 
