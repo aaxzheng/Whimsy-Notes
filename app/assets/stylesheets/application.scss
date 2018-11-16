@@ -38,3 +38,12 @@
     align-items: center;
     padding-left: 20px;
 }
+
+.header-username {
+  font-size: 13px;
+  text-align: left;
+  color: #ccc;
+  line-height: 19px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

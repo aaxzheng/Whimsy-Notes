@@ -21,10 +21,9 @@ class SideBar extends React.Component {
       <div className="sidebar-body">
         <section className="sidebar-header">
           <div>
-            <span>{this.user.username}</span>
+            <span className="header-username">{this.user.username}</span>
           </div>
         </section>
-        <button onClick={this.props.logout}>LOG OUT</button>
       </div>
       </>
     )
