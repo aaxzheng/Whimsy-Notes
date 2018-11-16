@@ -88,6 +88,7 @@ class Info extends React.Component {
       </div>
 
       <div className="fourth-body">
+
         <div className="fourth-text">
           <h1 className="fourth-text-header">Sign up for Whimsy Notes Today</h1>
           <p className="fourth-slogan">Capture ideas and inspiration from anywhere and manage tasks with ease.</p>
@@ -95,6 +96,7 @@ class Info extends React.Component {
         <div className= "fourth-form-div">
           <FourthFormContainer />
         </div>
+      
       </div>
 
 

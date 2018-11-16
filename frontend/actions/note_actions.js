@@ -38,20 +38,20 @@ export const fetchNotes = () => dispatch => {
   });
 };
 
-export const createNote = (note) => dispatch => {
-  return NoteAPIUtil.createNote(note).then((resp) => {
-    dispatch(receiveNote(note));
+export const createNote = (notebook,note) => dispatch => {
+  return NoteAPIUtil.createNote(notebook,note).then((resp) => {
+    dispatch(receiveNote(resp));
   });
 };
 
 export const updateNote = (note) => dispatch => {
   return NoteAPIUtil.updateNote(note).then((resp) => {
-    dispatch(receiveNote(note));
+    dispatch(receiveNote(resp));
   });
 };
 
 export const deleteNote = (id) => dispatch => {
   return NoteAPIUtil.deleteNote(id).then((resp) => {
-    dispatch(removeNote(resp));
+    dispatch(removeNote(id));
   });
 };

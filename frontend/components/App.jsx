@@ -5,12 +5,14 @@ import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting_container';
 import Splash from './splash/splash';
+import Notes from './notes/notes';
 
 
 const App = () => (
   <div className="main">
     <AuthRoute exact path="/" component={Splash} />
-    <Route exact path="/greeting" component={GreetingContainer} />
+    <Route exact path="/test" component={Notes}/>
+    <ProtectedRoute exact path="/greeting" component={GreetingContainer} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
   </div>
