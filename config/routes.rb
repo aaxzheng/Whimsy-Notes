@@ -9,5 +9,6 @@ Rails.application.routes.draw do
         resources :notes, only: [:create]
       end
       resources :notes, only: [:destroy,:show,:update,:index]
+      resources :tags, only: [:index,:show,:update,:destroy,:create]
     end
 end

@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_NOTE:
-      return merge({},state,{[action.note.id]: action.note});
+      return merge({},state,{[action.note.id]: action.note, tagIds: action.tagIds});
     case RECEIVE_NOTES:
       return merge({},action.notes);
     case REMOVE_NOTE:

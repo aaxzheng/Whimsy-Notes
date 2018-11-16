@@ -16,7 +16,7 @@ class Api::NotebooksController < ApplicationController
 
   def show
     @notebook = current_user.notebooks.find(params[:id])
-    @notes = current_user.notebooks.notes
+    @notes = @notebook.notes
     render "api/notebooks/show"
   end
 

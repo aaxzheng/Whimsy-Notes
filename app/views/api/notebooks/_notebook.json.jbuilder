@@ -1,4 +1,3 @@
-
-json.notebook do
-  json.extract! note, :id, :title
-end
+  json.notebook do
+    json.extract! notebook, :id, :title
+  end

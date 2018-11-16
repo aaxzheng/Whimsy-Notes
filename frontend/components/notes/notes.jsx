@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SideBar from './sidebar';
-import Info from './info';
+import SideBarContainer from './sidebar_container';
+// import Info from './info';
 
 const Notes = () => {
   return (
     <>
-    <SideBar />
-    <Index />
-    <Editor />
+    <SideBarContainer />
     </>
   );
 };

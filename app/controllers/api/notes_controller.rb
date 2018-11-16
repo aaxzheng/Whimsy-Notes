@@ -2,6 +2,7 @@ class Api::NotesController < ApplicationController
 
   def index
     @notes = Note.all.includes(:user)
+    @tags = Tag.all.includes(:notes)
     render :index
   end
 
@@ -16,7 +17,7 @@ class Api::NotesController < ApplicationController
 
   def show
     @note = current_user.notes.find(params[:id])
-    @tags = Tag.all.includes(:tagged_notes)
+    @tags = @note.tags
     render "api/notes/show"
   end
 
