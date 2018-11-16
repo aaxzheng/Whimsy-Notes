@@ -34,6 +34,6 @@ class Api::TagsController < ApplicationController
 
   def tag_note_params
     params.require(:tag_note).permit(:note_id)
-
+  end
 
 end
