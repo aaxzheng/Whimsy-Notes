@@ -15,10 +15,10 @@ class Footer extends React.Component {
                   <li>
                     <ul className="dud-lis">
                       <li><h6>PRODUCT</h6></li>
-                      <li>Why Whimsy Notes</li>
-                      <li>Whimsy Notes Basic</li>
-                      <li>Whimsy Notes Premium</li>
-                      <li>Whimsy Notes Business</li>
+                      <li>Why Whimsy</li>
+                      <li>Whimsy Basic</li>
+                      <li>Whimsy Premium</li>
+                      <li>Whimsy Business</li>
                       <li>Compare Plans</li>
                       <li>Student Discount</li>
                       <li>Download App</li>
@@ -76,8 +76,8 @@ class Footer extends React.Component {
               </div>
 
 
-
-            <hr className="second-break" />
+              <div className= "break-divide">
+              <hr className="second-break" />
               <div className="copyright-div">
                 <p className="copyright">2018 Whimsy Notes Corporation. All tights reserved.</p>
                 <ul className="copyright-list">
@@ -86,6 +86,7 @@ class Footer extends React.Component {
                   <li>Privacy</li>
                 </ul>
               </div>
+            </div>
             </div>
       )
     };

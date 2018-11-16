@@ -26,6 +26,8 @@
   border-radius: 5px;
   width:314px;
   box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Ubuntu',sans-serif;
 }
 
 #username {
@@ -177,4 +179,8 @@ li {
 ::placeholder {
   color:#737373;
   font-size: 14px;
+}
+
+input[type="text"] {
+  font-size: 18px;
 }
