@@ -1,9 +1,9 @@
-import SideBar from './sidebar';
+import Dropdown from './dropdown';
 import {connect} from 'react-redux';
 import {logout} from '../../actions/session_actions';
 import {fetchNotes, fetchNote} from '../../actions/note_actions';
 import {fetchNotebooks, fetchNotebook} from '../../actions/notebook_actions';
-import {dropdownReveal} from '../../util/app_util';
+import {dropdownReveal, dropdownHide} from '../../util/app_util';
 
 const msp = (state) => {
   return {
@@ -19,9 +19,9 @@ const mdp = (dispatch) => {
     fetchNotebook: (id) => dispatch(fetchNotebook(id)),
     fetchNote: (id) => dispatch(fetchNote(id)),
     logout: () => dispatch(logout()),
-    dropdownReveal: dropdownReveal
+    dropdownHide: dropdownHide,
   };
 };
 
 
-export default connect(msp,mdp)(SideBar);
+export default connect(msp,mdp)(Dropdown);
