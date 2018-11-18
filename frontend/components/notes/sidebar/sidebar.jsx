@@ -31,7 +31,7 @@ class SideBar extends React.Component {
 
   componentDidMount() {
     // this.props.fetchNote(13);
-    this.props.fetchNotebooks();
+    // this.props.fetchNotebooks();
     // this.props.fetchNotebook(3);
   }
 
@@ -74,7 +74,7 @@ class SideBar extends React.Component {
 
           <div className="sidebar-index-mods">
             <div className="shortcuts-body all-note">
-              <Link className="all-notes-link mod-hover" to="/test">
+              <Link className="all-notes-link mod-hover" to="/test/index">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ccc" id="14a" d="M16 16h2v-1h-2a.997.997 0 0 0-1 1v3h1v-3zM8 4h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1.5 4a.5.5 0 0 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h3a.5.5 0 1 0 0-1h-3z"></path></svg>
                 <span className="mods-span span-spacer">All Notes</span>
               </Link>

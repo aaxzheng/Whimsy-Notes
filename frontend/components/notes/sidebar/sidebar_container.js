@@ -1,9 +1,9 @@
 import SideBar from './sidebar';
 import {connect} from 'react-redux';
-import {logout} from '../../actions/session_actions';
-import {fetchNotes, fetchNote} from '../../actions/note_actions';
-import {fetchNotebooks, fetchNotebook} from '../../actions/notebook_actions';
-import {dropdownReveal} from '../../util/app_util';
+import {logout} from '../../../actions/session_actions';
+import {fetchNotes, fetchNote} from '../../../actions/note_actions';
+import {fetchNotebooks, fetchNotebook} from '../../../actions/notebook_actions';
+import {dropdownReveal} from '../../../util/app_util';
 
 const msp = (state) => {
   return {
