@@ -4,13 +4,35 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {query: '', results: []};
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.getNotes = this.getNotes.bind(this);
   }
 
   getNotes () {
-    this.props.notes.titles
+    this.state.results = [];
+    let notes = this.props.notes || {};
+    const query = this.state.query;
+    for (let i = 0; i < notes.length; i++) {
+        let word = "";
+      for (let j = 0; j < notes[i].note.title.length; j++) {
+        word += notes[i].note.title[j];
+        if (word.toLowerCase().includes(query.toLowerCase())) {
+           this.state.results.push(notes[i].note);
+           break;
+        }
+      }
+    }
   }
 
-  handleInputChange = () => {
+
+
+  componentDidMount() {
+    this.props.fetchNotes();
+    this.props.fetchNotebooks();
+    // this.props.fetchNotebook(3);
+  }
+
+  handleInputChange() {
   this.setState({
     query: this.search.value
   }, () => {
@@ -24,15 +46,19 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="search-bar-body">
         <input
-          placeholder="Search for..."
+          className = "search-bar-input"
+          placeholder="Search all notes..."
           ref={input => this.search = input}
           onChange={this.handleInputChange}
         />
-        <p>{this.state.query}</p>
+      <button className="search-bar-btn"> Hi </button>
       </form>
     )
   }
 
 }
+
+
+export default Search;

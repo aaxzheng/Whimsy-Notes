@@ -23,6 +23,8 @@ laotze = Note.create(title: "Reflection on Reality", body: "Once upon a time, I 
         Soon I awaked, and there I was, veritably myself again. Now I do not know whether I was then a man
         dreaming I was a butterfly, or whether I am now a butterfly, dreaming I am a man.", user_id: demo.id, notebook_id: shower.id)
 check = Note.create( title: "To do", body: "Double check my proposal!", user_id: demo.id, notebook_id: app.id)
+mind = Note.create(title: "Reflection on Mind", body: "Is the mind and brain connected?", user_id: demo.id, notebook_id: shower.id)
+soul = Note.create(title: "Reflection on Soul", body:"The soul is a component of our being much like our mind but has no physical manifestation which it is linked to.", user_id: demo.id, notebook_id: shower.id)
 philo = Tag.create!(tag: "philosophy", user_id:demo.id)
 whim = Tag.create!(tag: "whimsical", user_id:demo.id)
 code = Tag.create!(tag: "coding", user_id:demo.id)
