@@ -5,8 +5,11 @@ json.notebooks
     json.partial! 'api/notebooks/notebook', notebook:notebook
   end
 end
-json.titles do
+json.notebooks do
   json.array! @notebooks do |notebook|
-    json.notebook notebook.title
+    json.notebook notebook
+    json.notes do
+      json.array! notebook.notes
+    end
   end
 end

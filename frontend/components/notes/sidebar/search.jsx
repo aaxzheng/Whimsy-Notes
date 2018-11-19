@@ -6,25 +6,29 @@ class Search extends React.Component {
     this.state = {query: '', results: []};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.getNotes = this.getNotes.bind(this);
+    this.sendResults = this.sendResults.bind(this);
   }
 
-  getNotes () {
+  getNotes() {
     this.state.results = [];
     let notes = this.props.notes || {};
     const query = this.state.query;
     for (let i = 0; i < notes.length; i++) {
         let word = "";
-      for (let j = 0; j < notes[i].note.title.length; j++) {
-        word += notes[i].note.title[j];
+      for (let j = 0; j < notes[i].title.length; j++) {
+        word += notes[i].title[j];
         if (word.toLowerCase().includes(query.toLowerCase())) {
-           this.state.results.push(notes[i].note);
+           this.state.results.push(notes[i]);
            break;
         }
       }
     }
   }
 
-
+  sendResults() {
+    this.props.fetchArray(this.state.results,this.state.query);
+    this.state.results = [];
+  }
 
   componentDidMount() {
     // this.props.fetchNotes();
@@ -37,7 +41,7 @@ class Search extends React.Component {
     query: this.search.value
   }, () => {
     if (this.state.query && this.state.query.length > 1) {
-      if (this.state.query.length % 2 === 0) {
+      if (this.state.query.length > 1) {
         this.getNotes()
       }
     }
@@ -46,7 +50,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form className="search-bar-body">
+      <form onSubmit={this.sendResults} className="search-bar-body">
         <input
           className = "search-bar-input"
           placeholder="Search all notes..."

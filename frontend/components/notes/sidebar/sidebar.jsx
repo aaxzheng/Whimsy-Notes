@@ -23,19 +23,49 @@ class SideBar extends React.Component {
      this.node = node;
    }
 
+   showAllNotes() {
+     this.props.fetchArray(this.props.notes,"All Notes");
+   }
+
+   stallReveal() {
+     setTimeout(this.revealNotebook(),100);
+   }
+
+   revealNotebook() {
+     document.getElementById('notebook-reveal').classList.toggle("reveal");
+   }
+
+   showNotebookNotes(notebook) {
+     this.props.fetchArray(notebook.notes,notebook.notebook.title);
+   }
+
+
    handleClickOutside(event) {
      if (this.node && !this.node.contains(event.target)) {
        this.props.dropdownReveal();
      }
    }
 
-  componentDidMount() {
+  componentWillMount() {
     // this.props.fetchNote(13);
-    // this.props.fetchNotebooks();
+    this.props.fetchNotebooks();
     // this.props.fetchNotebook(3);
   }
 
   render() {
+    const notebooks = this.props.notebooks || [];
+    const titles = notebooks.map((notebook,idx) => {
+      return (
+        <div>
+          <div onClick={() => this.showNotebookNotes(notebook)} to="/test/index/editor" key={idx} className="notebook-item mod-hover">
+            <svg xmlns="http://www.w3.org/2000/svg" className="notebook-icon" fill="#ccc" width="14" height="14" viewBox="0 0 14 14" ><path id="31a" d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"></path></svg>
+            <span className="notebook-title">{notebook.notebook.title}</span>
+          </div>
+        </div>
+
+
+      )
+    });
     return (
       <>
       <div className="sidebar-body">
@@ -74,22 +104,25 @@ class SideBar extends React.Component {
 
           <div className="sidebar-index-mods">
             <div className="shortcuts-body all-note">
-              <Link className="all-notes-link mod-hover" to="/test/index">
+              <Link onClick={this.showAllNotes.bind(this)} className="all-notes-link mod-hover" to="/test/index">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ccc" id="14a" d="M16 16h2v-1h-2a.997.997 0 0 0-1 1v3h1v-3zM8 4h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1.5 4a.5.5 0 0 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h3a.5.5 0 1 0 0-1h-3z"></path></svg>
                 <span className="mods-span span-spacer">All Notes</span>
               </Link>
             </div>
 
-            <div className="shortcuts-body notebooks">
+            <div   className="shortcuts-body notebooks">
               <div>
                 <div className="arrow-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" className="shortcuts-arrow"><path fill-rule="evenodd" d="M2 0l4 4-4 4z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" className="shortcuts-arrow"><path d="M2 0l4 4-4 4z"></path></svg>
                 </div>
-                <div className="shortcuts-body">
-                  <Link to="/test" className="shortcuts-text mod-hover">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path fill="#ccc" d="M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"></path></svg>
-                  <span className="mod-span span-spacer">Notebooks</span>
+                <div onClick={this.revealNotebook} className="shortcuts-body">
+                  <Link  to="/test/index" className="shortcuts-text mod-hover">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" ><path fill="#ccc" d="M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"></path></svg>
+                    <span  className="mod-span span-spacer">Notebooks</span>
                   </Link>
+                <div onClick={(e) => e.stopPropagation()} id="notebook-reveal" className="hidden">
+                  {titles}
+                </div>
                 </div>
               </div>
             </div>

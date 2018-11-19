@@ -8,7 +8,11 @@ class NotesIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.props.fetchNotes();
+  }
+
+  componentWillUnmount() {
     this.props.fetchNotes();
   }
 
@@ -16,17 +20,17 @@ class NotesIndex extends React.Component {
     const notes = this.props.notes || [];
     const index = notes.map(note => {
       return (
-        <NotesIndexItem key={note.note.id} note={note.note}/>
+        <NotesIndexItem key={note.id} note={note} fetchNotes={this.props.fetchNotes} fetchNote={this.props.fetchNote} />
       )
     });
     return (
       <div className="index-body">
         <header className="index-header">
           <div className="index-name-div">
-            <h1 className="index-name">All Notes</h1>
+            <h1 className="index-name">{this.props.query}</h1>
           </div>
           <div className="index-number">
-            <span className="num-notes">8 Notes</span>
+            <span className="num-notes"> {notes.length} Notes</span>
             <div className="index-sort">
               <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path fill="#737373" id="47a" d="M8 16.793l-2.146-2.147-.708.708L8.5 18.707l3.354-3.353-.708-.708L9 16.793V5H8v11.793zM12 5h9v1h-9V5zm0 3h7v1h-7V8zm0 3h5v1h-5v-1z"></path></svg>
             </div>

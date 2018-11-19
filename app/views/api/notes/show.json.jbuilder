@@ -1,2 +1,1 @@
-json.partial! 'api/notes/note' ,note: @note
-json.tag_ids @tags.ids
+json.partial! 'api/notes/note' ,note: @note , tags: @tags

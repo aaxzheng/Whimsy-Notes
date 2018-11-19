@@ -3,13 +3,21 @@ import * as NoteAPIUtil from '../util/notes_api_util';
 export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const RECEIVE_NOTES = "RECEIVE_NOTES";
 export const REMOVE_NOTE = "REMOVE_NOTE";
+export const RECEIVE_ARRAY = "RECEIVE_ARRAY";
 
 
-export const receiveNote = ({note,tag_ids}) => {
+export const receiveArray = (array,query) => {
+  return {
+    type: RECEIVE_ARRAY,
+    array,
+    query,
+  }
+}
+
+export const receiveNote = (note) => {
   return {
     type: RECEIVE_NOTE,
     note,
-    tagIds: tag_ids,
   };
 };
 
@@ -56,3 +64,7 @@ export const deleteNote = (id) => dispatch => {
     dispatch(removeNote(id));
   });
 };
+
+export const fetchArray = (results,query) => dispatch => {
+  return dispatch(receiveArray(results,query));
+}
