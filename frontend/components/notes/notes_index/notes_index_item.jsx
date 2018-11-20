@@ -8,7 +8,8 @@ class NotesIndexItem extends React.Component {
   }
 
   sendNote() {
-    this.props.fetchNote(this.props.note.id);
+    clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout(this.props.fetchNote(this.props.note.id),5000);
   }
 
   render() {
@@ -19,7 +20,7 @@ class NotesIndexItem extends React.Component {
         </div>
 
         <div className="item-body">
-          {this.props.note.body}
+          {this.props.note.preview}
         </div>
 
         <div className="item-date">

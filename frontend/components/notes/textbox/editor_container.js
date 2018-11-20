@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Editor from './editor';
-import {fetchNote} from '../../../actions/note_actions';
+import {fetchNote, updateNote} from '../../../actions/note_actions';
 
 const msp = (state,ownProps) => {
   const note = state.entities.notes.note || {body:""}
@@ -12,6 +12,7 @@ const msp = (state,ownProps) => {
 const mdp = dispatch => {
   return {
     fetchNote: (id) => dispatch(fetchNote(id)),
+    updateNote: (note) => dispatch(updateNote(note)),
   }
 }
 

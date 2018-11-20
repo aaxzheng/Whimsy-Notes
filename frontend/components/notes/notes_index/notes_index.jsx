@@ -9,11 +9,9 @@ class NotesIndex extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchNotes();
   }
 
   componentWillUnmount() {
-    this.props.fetchNotes();
   }
 
   render() {

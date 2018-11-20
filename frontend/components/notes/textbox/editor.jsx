@@ -3,18 +3,59 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import {merge} from 'lodash';
 
+const modules = {toolbar: [
+  [{'font': []}],
+  [{ 'size': ['small', false, 'large', 'huge'] }],
+  [{ 'color': [] }],
+  ['bold','italic','underline','strike', {'background': [] },'code-block'],
+  [{'list':'checkbox'},{'list':'bullet'},{'list':'ordered'}],
+  ['link','image'],
+  [{ 'align': []}],
+]};
+
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = merge({},this.props.note);
     this.handleChange = this.handleChange.bind(this);
+    // this.modules = {toolbar: [
+    //   [{'font': []}],
+    //   [{ 'size': ['small', false, 'large', 'huge'] }],
+    //   [{ 'color': [] }],
+    //   ['bold','italic','underline','strike', {'background': [] },'code-block'],
+    //   [{'list':'checkbox'},{'list':'bullet'},{'list':'ordered'}],
+    //   ['link','image'],
+    //   [{ 'align': []}],
+    // ]}
   }
 
-  handleChange(input) {
-    clearTimeout(this.timeoutId);
-    this.setState({ body:input });
-    this.timeoutId = setTimeout(()=>console.log("hello from cb"),2000);
+  // saveDocument(node) {
+  //   node.focus();
+  //   const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
+  //   node.focus();
+  //   const input = unprivilegedEditor.getText();
+  //   this.setState({body: input})
+  //   node.focus();
+  // }
+
+
+  updateState(editor){
+    console.log("im firing");
+
+    this.props.updateNote(this.state);
   }
+
+  handleChange(input,delta,source,editor) {
+    clearTimeout(this.timeoutId);
+    const inputs = editor.getText();
+    this.setState({ body: input, preview: inputs });
+    const textbox = document.getElementsByClassName('ql-editor')[0];
+    textbox.focus();
+    this.timeoutId = setTimeout(this.updateState(editor),3000);
+  }
+
+
+
 
   componentDidUpdate(oldProps) {
     if(oldProps.note.id !== this.props.note.id) {
@@ -25,16 +66,8 @@ class Editor extends React.Component {
 
   render() {
 
-    debugger;
-    let modules = {toolbar: [
-      [{'font': []}],
-      [{ 'size': ['small', false, 'large', 'huge'] }],
-      [{ 'color': [] }],
-      ['bold','italic','underline','strike', {'background': [] },'code-block'],
-      [{'list':'checkbox'},{'list':'bullet'},{'list':'ordered'}],
-      ['link','image'],
-      [{ 'align': []}],
-    ]}
+
+
     return (
       <div className="text-body-div">
         <div className="quill-header-div">
@@ -57,10 +90,12 @@ class Editor extends React.Component {
         </div>
         <ReactQuill
           id="textbox"
+          ref={(el) => { this.reactQuillRef = el }}
           modules = {modules}
           onChange={this.handleChange}
           value={this.state.body}
           />
+          <input type="text" className="edit-title" value={this.state.title}/>
       </div>
     )
   }

@@ -6,8 +6,9 @@ class Api::NotesController < ApplicationController
     render :index
   end
 
-  def edit
+  def update
     @note = current_user.notes.find(params[:id])
+    @tags = @note.tags
     if @note.update(note_params)
       render "api/notes/show"
     else
@@ -29,7 +30,7 @@ class Api::NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:body)
+    params.require(:note).permit(:body,:title,:preview)
   end
 
 end
