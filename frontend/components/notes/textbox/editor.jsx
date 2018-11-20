@@ -51,7 +51,7 @@ class Editor extends React.Component {
     this.setState({ body: input, preview: inputs });
     const textbox = document.getElementsByClassName('ql-editor')[0];
     textbox.focus();
-    this.timeoutId = setTimeout(this.updateState(editor),3000);
+    this.timeoutId = setTimeout(() => this.updateState(editor),3000);
   }
 
 

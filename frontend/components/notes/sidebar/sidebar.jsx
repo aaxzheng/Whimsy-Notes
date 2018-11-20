@@ -9,6 +9,7 @@ class SideBar extends React.Component {
     this.user = this.props.user;
     this.setRef = this.setRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.addNewNote = this.addNewNote.bind(this);
   }
 
   componentDidMount() {
@@ -36,9 +37,15 @@ class SideBar extends React.Component {
    }
 
    showNotebookNotes(notebook) {
+     this.props.fetchNotebook(notebook.notebook.id);
      this.props.fetchArray(notebook.notes,notebook.notebook.title);
    }
 
+   addNewNote() {
+     const notebookId = this.props.currentNotebookId
+     const note = {body:"", title:""}
+     this.props.createNote(notebookId,note).then((note) => fetchNote(note));
+   }
 
    handleClickOutside(event) {
      if (this.node && !this.node.contains(event.target)) {
@@ -82,7 +89,7 @@ class SideBar extends React.Component {
         </section>
         <div className="search-add-div">
         <SearchContainer />
-        <div className="add-note-div">
+        <div onClick={this.addNewNote} className="add-note-div">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"  className="add-note-icon" data-event-off="click"><g fill="none" ><path d="M0 0h30v30H0z"></path><circle cx="15" cy="15" r="14" fill="#00A82D"></circle><rect width="14" height="2" x="8" y="14" fill="#FFF" rx="1"></rect><rect width="2" height="14" x="14" y="8" fill="#FFF" rx="1"></rect></g></svg>
           <span className="add-note-span">New Note</span>
         </div>

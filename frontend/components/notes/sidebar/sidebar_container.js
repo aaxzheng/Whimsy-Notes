@@ -6,10 +6,12 @@ import {fetchNotebooks, fetchNotebook} from '../../../actions/notebook_actions';
 import {dropdownReveal} from '../../../util/app_util';
 
 const msp = (state) => {
+    // const notebookId = state.results.current || null;
   return {
     notes:state.entities.notes.notes,
     notebooks: state.entities.notebooks.notebooks,
-    user: state.entities.users[state.session.currentUserId]
+    user: state.entities.users[state.session.currentUserId],
+    // currentNotebookId: notebookId,
   };
 };
 

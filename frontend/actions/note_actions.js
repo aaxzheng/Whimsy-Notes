@@ -47,8 +47,8 @@ export const fetchNotes = () => dispatch => {
   });
 };
 
-export const createNote = (notebook,note) => dispatch => {
-  return NoteAPIUtil.createNote(notebook,note).then((resp) => {
+export const createNote = (notebookId,note) => dispatch => {
+  return NoteAPIUtil.createNote(notebookId,note).then((resp) => {
     dispatch(receiveNote(resp));
   });
 };
