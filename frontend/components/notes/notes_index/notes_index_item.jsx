@@ -11,7 +11,6 @@ class NotesIndexItem extends React.Component {
 
 
   componentDidMount() {
-    this.props.fetchNotes();
   }
 
   componentDidUpdate(oldProps) {
