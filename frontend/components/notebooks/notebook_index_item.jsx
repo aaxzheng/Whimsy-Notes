@@ -6,41 +6,33 @@ class NotebookIndexItem extends React.Component {
     super(props);
     this.sendNotes = this.sendNotes.bind(this);
     this.node = React.createRef();
+    this.removeNb = this.removeNb.bind(this);
+    this.dropdownReveal = this.dropdownReveal.bind(this);
+    this.dropdownHide = this.dropdownHide.bind(this);
+    this.editModal = this.editModal.bind(this);
   }
 
   dropdownReveal() {
-    document.getElementById("notebookDropdownBox").classList.toggle("show-nb-dropdown");
+    document.getElementById(`${this.props.notebook.notebook.id}`).classList.toggle("show-nb-dropdown");
+  }
+
+  editModal() {
+    this.props.fetchNotebook(this.props.notebook.notebook.id);
+    setTimeout(() => this.props.openModal('editNb'),200);
   }
 
   dropdownHide() {
     let obj = document.getElementsByClassName("show-nb-dropdown")[0];
     if (obj) {
-      setTimeout(() => obj.classList.toggle("show-nb-dropdown"),500);
+      setTimeout(() =>obj.classList.toggle("show-nb-dropdown"),300);
     }
   }
 
-  handleClickOutside(e) {
-    debugger
-    if (this.node === e.target) {
-      return;
-    }
-    this.dropdownHide();
+  removeNb() {
+    this.props.deleteNotebook(this.props.notebook.notebook.id);
   }
 
-  componentDidMount() {
-     document.addEventListener('mousedown', this.handleClickOutside);
-   }
 
-  componentWillUnmount() {
-     document.removeEventListener('mousedown', this.handleClickOutside);
-   }
-
-  handleClickOutside(e) {
-    if (this.node === e.target) {
-     return;
-    }
-     this.dropdownHide();
-  }
 
   sendNotes() {
     this.props.fetchNotebook(this.props.notebook.notebook.id);
@@ -62,13 +54,13 @@ class NotebookIndexItem extends React.Component {
           </div>
         </div>
 
-        <div onClick={this.dropdownReveal} ref={this.node} className="nb-item-action">
+        <div onFocus={this.dropdownReveal} tabIndex="0" onBlur={this.dropdownHide} className="nb-item-action">
           <svg  width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"  className="nb-trip-dot"><path fill="#777777" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"  ></path></svg>
           <div  className="nb-item-dropdown">
-            <div id="notebookDropdownBox"  className="nb-item-dropdown-body">
+            <div id={this.props.notebook.notebook.id} ref={this.node}  className="nb-item-dropdown-body">
               <ul className="quill-dropdown-items">
-                <li className="quill-dropdown-actions rename-nb">Rename notebook</li>
-                <li className="quill-dropdown-actions rename-nb">Delete notebook</li>
+                <li onClick={this.editModal} className="quill-dropdown-actions rename-nb">Rename notebook</li>
+                <li onClick={this.removeNb} className="quill-dropdown-actions rename-nb">Delete notebook</li>
               </ul>
             </div>
           </div>

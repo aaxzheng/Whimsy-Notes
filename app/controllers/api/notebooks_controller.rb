@@ -5,9 +5,10 @@ class Api::NotebooksController < ApplicationController
     render :index
   end
 
-  def edit
+  def update
     @notebook = current_user.notebooks.find(params[:id])
     if @notebook.update(notebook_params)
+      @notes = @notebook.notes
       render "api/notebooks/show"
     else
       render json: @notebook.errors.full_messages, status: 422
@@ -21,8 +22,9 @@ class Api::NotebooksController < ApplicationController
   end
 
   def create
-    @notebook = current_user.notebooks.find(params[:id])
-    if @notebook.save(notebook_params)
+    @notebook = Notebook.new(notebook_params)
+    @notes = @notebook.notes
+    if @notebook.save
       render "api/notebooks/show"
     else
       render json: @notebook.errors.full_messages, status: 422
@@ -32,12 +34,13 @@ class Api::NotebooksController < ApplicationController
 
   def destroy
      @notebook = current_user.notebooks.find(params[:id])
+     @notes = @notebook.notes
      @notebook.destroy
      render "api/notebooks/show"
   end
 
-  def note_params
-    params.require(:notebook).permit(:title)
+  def notebook_params
+    params.require(:notebook).permit(:title,:user_id)
   end
 
 end

@@ -36,8 +36,9 @@ class Api::NotesController < ApplicationController
 
   def destroy
      @note = current_user.notes.find(params[:id])
+     @tags = @note.tags
      @note.destroy
-     render "api/notes/index"
+     render "api/notes/show"
   end
 
   def note_params

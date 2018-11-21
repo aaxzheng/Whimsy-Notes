@@ -1,6 +1,6 @@
 import ReactQuill from "react-quill";
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {merge} from 'lodash';
 
 const Font = Quill.import('formats/font');
@@ -24,6 +24,7 @@ class Editor extends React.Component {
     this.removeNote = this.removeNote.bind(this);
     this.node = React.createRef();
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.dupNote = this.dupNote.bind(this);
   }
 
 
@@ -38,9 +39,14 @@ class Editor extends React.Component {
     }
   }
 
-  updateState(editor){
-    console.log("im firing");
+  dupNote() {
+    const notebookId = this.state.notebook_id;
+    const note = {title:`${this.state.title} copy`, body: this.state.body,notebook_id: this.state.notebook_id, user_id:this.props.user.id, preview: this.state.preview};
+    debugger
+    this.props.createNote(notebookId,note);
+  }
 
+  updateState(editor) {
     this.props.updateNote(this.state);
   }
 
@@ -66,7 +72,6 @@ class Editor extends React.Component {
    }
 
   handleClickOutside(e) {
-    debugger
     if (this.node === e.target) {
       return;
     }
@@ -94,7 +99,7 @@ class Editor extends React.Component {
           <div id="quillDropdownBox" ref={this.node} className="quill-dropdown">
             <ul  className="quill-dropdown-items">
               <li className="quill-dropdown-actions ">Move to...</li>
-              <li className="quill-dropdown-actions ">Duplicate note</li>
+              <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
               <li onClick={this.removeNote} className="quill-dropdown-actions"><Link to="/test/index">Delete note</Link></li>
             </ul>
           </div>

@@ -1,4 +1,4 @@
-
+import {openModal} from '../../actions/notebook_modal_actions';
 import NotebookIndex from './notebook_index';
 import {connect} from 'react-redux';
 import {fetchNotebook,fetchNotebooks,createNotebook,deleteNotebook} from '../../actions/notebook_actions';
@@ -16,6 +16,7 @@ const mdp = (dispatch) => {
     createNotebook: (notebook) => dispatch(createNotebook(notebook)),
     deleteNotebook: (id) => dispatch(deleteNotebook(id)),
     fetchArray: (results,query) => dispatch(fetchArray(results,query)),
+    openModal: (modal) => dispatch(openModal(modal)),
   }
 }
 
