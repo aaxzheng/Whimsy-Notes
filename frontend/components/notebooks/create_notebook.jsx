@@ -16,6 +16,7 @@ class CreateNotebookForm extends React.Component {
   newNotebook() {
     const notebook = {title: this.state.title, user_id: this.props.user.id};
     this.props.createNotebook(notebook);
+    this.props.closeModal();
   }
 
 
