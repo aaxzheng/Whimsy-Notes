@@ -6,6 +6,17 @@ class Api::NotesController < ApplicationController
     render :index
   end
 
+  def create
+    @note = Note.new(note_params)
+    @tags = @note.tags
+    if @note.save
+      render "api/notes/show"
+    else
+      render json: @note.errors.full_messages,status: 422
+    end
+  end
+
+
   def update
     @note = current_user.notes.find(params[:id])
     @tags = @note.tags
@@ -26,11 +37,11 @@ class Api::NotesController < ApplicationController
   def destroy
      @note = current_user.notes.find(params[:id])
      @note.destroy
-     render "api/notes/show"
+     render "api/notes/index"
   end
 
   def note_params
-    params.require(:note).permit(:body,:title,:preview)
+    params.require(:note).permit(:body,:title,:preview,:notebook_id,:user_id)
   end
 
 end

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import DropdownContainer from './dropdown_container';
 import SearchContainer from './search_container';
+import {merge} from 'lodash';
+
 
 class SideBar extends React.Component {
   constructor (props) {
@@ -14,7 +16,15 @@ class SideBar extends React.Component {
 
   componentDidMount() {
      document.addEventListener('mousedown', this.handleClickOutside);
+     this.props.fetchNotebooks();
+     this.props.fetchNotes();
    }
+  componentDidUpdate(oldProps) {
+    if (oldProps.notebooks !== this.props.notebooks) {
+      this.setState(merge({},this.props))
+    }
+  }
+
 
   componentWillUnmount() {
      document.removeEventListener('mousedown', this.handleClickOutside);
@@ -42,9 +52,9 @@ class SideBar extends React.Component {
    }
 
    addNewNote() {
-     const notebookId = this.props.currentNotebookId
-     const note = {body:"", title:""}
-     this.props.createNote(notebookId,note).then((note) => fetchNote(note));
+     const notebookId = this.props.currentNotebookId || this.props.notebooks[0].notebook.id;
+     const note = {body:"", title:"", notebook_id: notebookId, user_id:this.user.id}
+     this.props.createNote(notebookId,note).then(() => this.props.fetchNotes());
    }
 
    handleClickOutside(event) {
@@ -53,22 +63,16 @@ class SideBar extends React.Component {
      }
    }
 
-  componentDidMount() {
-    // this.props.fetchNote(13);
-    this.props.fetchNotebooks();
-    this.props.fetchNotes();
-    // this.props.fetchNotebook(3);
-  }
 
   render() {
     const notebooks = this.props.notebooks || [];
     const titles = notebooks.map((notebook,idx) => {
       return (
         <div>
-          <div onClick={() => this.showNotebookNotes(notebook)} to="/test/index/editor" key={idx} className="notebook-item mod-hover">
+          <Link onClick={() => this.showNotebookNotes(notebook)} to="/test/index/" key={idx} className="notebook-item mod-hover">
             <svg xmlns="http://www.w3.org/2000/svg" className="notebook-icon" fill="#ccc" width="14" height="14" viewBox="0 0 14 14" ><path id="31a" d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"></path></svg>
             <span className="notebook-title">{notebook.notebook.title}</span>
-          </div>
+          </Link>
         </div>
 
 
@@ -118,13 +122,13 @@ class SideBar extends React.Component {
               </Link>
             </div>
 
-            <div   className="shortcuts-body notebooks">
+            <div className="shortcuts-body notebooks">
               <div>
                 <div className="arrow-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" className="shortcuts-arrow"><path d="M2 0l4 4-4 4z"></path></svg>
                 </div>
                 <div onClick={this.revealNotebook} className="shortcuts-body">
-                  <Link  to="/test/index" className="shortcuts-text mod-hover">
+                  <Link  to="/test/notebooks" className="shortcuts-text mod-hover">
                     <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" ><path fill="#ccc" d="M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"></path></svg>
                     <span  className="mod-span span-spacer">Notebooks</span>
                   </Link>

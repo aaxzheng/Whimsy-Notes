@@ -1,10 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {merge} from 'lodash';
+
 
 class NotesIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = merge({},this.props)
+  }
+
 
   componentDidMount() {
     this.props.fetchNotes();
+  }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.note !== this.props.note) {
+      this.setState(merge({},this.props));
+    }
   }
 
   sendNote() {
@@ -13,10 +26,12 @@ class NotesIndexItem extends React.Component {
   }
 
   render() {
+    const title = this.props.note.title || "Untitled";
+
     return (
       <Link onClick={this.sendNote.bind(this)} to="/test/index/editor" className="index-item">
         <div className="item-name">
-          <p className="item-name-word">{this.props.note.title}</p>
+          <p className="item-name-word">{title}</p>
         </div>
 
         <div className="item-body">
@@ -24,7 +39,7 @@ class NotesIndexItem extends React.Component {
         </div>
 
         <div className="item-date">
-          Yesterday (test date)
+          Yesterday (not yet implemented)
         </div>
       </Link>
     )
