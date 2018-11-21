@@ -5,7 +5,7 @@ import {fetchNotebook,fetchNotebooks,createNotebook,deleteNotebook} from '../../
 import {fetchArray} from '../../actions/note_actions';
 const msp = (state,ownProps) => {
   return {
-    notebooks: state.entities.notebooks.notebooks,
+    notebooks: Object.values(state.entities.notebooks),
   }
 }
 

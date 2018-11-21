@@ -6,7 +6,7 @@ import {fetchNotebook,updateNotebook} from '../../actions/notebook_actions';
 const msp = (state) => {
   return {
     user: state.entities.users[state.session.currentUserId],
-    notebook: state.entities.notebooks[state.entities.results.current],
+    notebook: state.entities.notebooks[state.entities.results.currentNb],
   };
 };
 

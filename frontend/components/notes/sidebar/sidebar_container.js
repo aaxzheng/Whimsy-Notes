@@ -7,12 +7,12 @@ import {dropdownReveal} from '../../../util/app_util';
 
 const msp = (state) => {
     let notebookId = null;
-    if (state.entities.results.current) {
-      notebookId = state.entities.results.current;
+    if (state.entities.results.currentNb) {
+      notebookId = state.entities.results.currentNb;
     }
   return {
-    notes:state.entities.notes.notes,
-    notebooks: state.entities.notebooks.notebooks,
+    notes: Object.values(state.entities.notes),
+    notebooks: Object.values(state.entities.notebooks),
     user: state.entities.users[state.session.currentUserId],
     currentNotebookId: notebookId,
   };

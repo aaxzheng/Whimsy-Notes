@@ -4,11 +4,11 @@ import {fetchNote, updateNote,deleteNote,fetchNotes,createNote} from '../../../a
 
 const msp = (state,ownProps) => {
   let notebookId = null;
-  if (state.entities.results.current) {
-    notebookId = state.entities.results.current;
+  if (state.entities.results.currentNb) {
+    notebookId = state.entities.results.currentNb;
   }
 
-  const note = state.entities.notes.note || {body:""}
+  const note = state.entities.notes[state.entities.results.currentNote] || {body:""}
   return {
     note: note,
     user: state.entities.users[state.session.currentUserId],

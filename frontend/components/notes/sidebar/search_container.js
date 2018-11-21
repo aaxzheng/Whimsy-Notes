@@ -4,7 +4,7 @@ import {fetchNotes, fetchNote, fetchArray} from '../../../actions/note_actions';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 
 const msp = (state) => {
-  const notes = state.entities.notes.notes || [];
+  const notes = Object.values(state.entities.notes) || [];
   return {
     notes: notes,
     user: state.entities.users[state.session.currentUserId],

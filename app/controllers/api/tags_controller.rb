@@ -11,25 +11,35 @@ class Api::TagsController < ApplicationController
   end
 
   def index
-
+    @tags = current_user.tags
+    render "api/tags/index"
   end
 
   def update
-
+    @tag = current_user.notes.find(params[:id])
+    if @tag.update(note_params)
+      render "api/tags/show"
+    else
+      render json: @tag.errors.full_messages, status: 422
+    end
   end
 
   def show
-
+    @tag = current_user.tags.find(params[:id])
+    render "api/tags/show"
   end
 
-  def destroy
 
+  def destroy
+     @tag = current_user.tags.find(params[:id])
+     @tag.destroy
+     render "api/tags/show"
   end
 
   private
 
   def tag_params
-    params.require(:tag).permit(:tag)
+    params.require(:tag).permit(:tag,:user_id)
   end
 
   def tag_note_params
