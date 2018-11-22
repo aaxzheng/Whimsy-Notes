@@ -1,24 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import NotesIndexItem from './notes_index_item';
-
+import {merge} from 'lodash';
 
 class NotesIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = merge({},this.props);
   }
 
-  componentWillMount() {
-  }
 
-  componentWillUnmount() {
+  componentDidUpdate(oldProps) {
+    if (oldProps.notes !== this.props.notes) {
+      this.setState({notes: this.props.notes});
+    }
   }
 
   render() {
-    const notes = this.props.notes || [];
-    const index = notes.map(note => {
+    const notes = this.state.notes || [];
+    debugger
+    const index = notes.map((note,idx) => {
       return (
-        <NotesIndexItem key={note.id} note={note} fetchNotes={this.props.fetchNotes} fetchNote={this.props.fetchNote} />
+        <NotesIndexItem key={idx} note={note} fetchNotes={this.props.fetchNotes} fetchNote={this.props.fetchNote} />
       )
     });
     return (

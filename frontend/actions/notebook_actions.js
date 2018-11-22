@@ -5,11 +5,10 @@ export const RECEIVE_NOTEBOOKS = "RECEIVE_NOTEBOOKS";
 export const REMOVE_NOTEBOOK = "REMOVE_NOTEBOOK";
 
 
-export const receiveNotebook = ({notebook, note_ids}) => {
+export const receiveNotebook = (notebook) => {
   return {
     type: RECEIVE_NOTEBOOK,
     notebook,
-    noteIds: note_ids,
   };
 };
 

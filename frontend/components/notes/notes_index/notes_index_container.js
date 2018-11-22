@@ -9,7 +9,7 @@ const msp = (state,ownProps) => {
     array = state.entities.results.array;
   }
 
-  const notes = array || state.entities.notes.notes;
+  const notes = array || Object.values(state.entities.notes);
   const query = state.entities.results.query || "All Notes";
   return {
     notes: notes,

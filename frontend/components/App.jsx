@@ -8,10 +8,13 @@ import Splash from './splash/splash';
 import SideBarContainer from './notes/sidebar/sidebar_container';
 import NotesIndexContainer from './notes/notes_index/notes_index_container';
 import TextEditorContainer from './notes/textbox/editor_container';
+import NotebookIndexContainer from './notebooks/notebook_index_container';
+import NotebookModalContainer from './notebooks/notebook_modal_container';
 
 
 const App = () => (
   <div className="main">
+    <NotebookModalContainer />
     <AuthRoute exact path="/" component={Splash} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
@@ -21,7 +24,7 @@ const App = () => (
         <ProtectedRoute path="/test/index" component={NotesIndexContainer}/>
         <ProtectedRoute exact path="/test/index/editor" component={TextEditorContainer} />
       </div>
-      <ProtectedRoute exact path="/greeting" component={GreetingContainer} />
+      <ProtectedRoute path="/test/notebooks" component={NotebookIndexContainer}/>
     </div>
   </div>
 );

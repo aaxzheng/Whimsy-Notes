@@ -1,14 +1,17 @@
 import ReactQuill from "react-quill";
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {merge} from 'lodash';
 
+const Font = Quill.import('formats/font');
+Font.whitelist= ['ubuntu','sans-serif','serif','raleway','monospace','monoserrat'];
+Quill.register(Font,true);
+
 const modules = {toolbar: [
-  [{'font': []}],
+  [{'font': ['sans-serif','serif','monospace']}],
   [{ 'size': ['small', false, 'large', 'huge'] }],
-  [{ 'color': [] }],
-  ['bold','italic','underline','strike', {'background': [] },'code-block'],
-  [{'list':'checkbox'},{'list':'bullet'},{'list':'ordered'}],
+  [{ 'color': [] },'bold','italic','underline','strike', {'background': [] },'code-block'],
+  [{'list':'bullet'},{'list':'ordered'}],
   ['link','image'],
   [{ 'align': []}],
 ]};
@@ -18,30 +21,32 @@ class Editor extends React.Component {
     super(props);
     this.state = merge({},this.props.note);
     this.handleChange = this.handleChange.bind(this);
-    // this.modules = {toolbar: [
-    //   [{'font': []}],
-    //   [{ 'size': ['small', false, 'large', 'huge'] }],
-    //   [{ 'color': [] }],
-    //   ['bold','italic','underline','strike', {'background': [] },'code-block'],
-    //   [{'list':'checkbox'},{'list':'bullet'},{'list':'ordered'}],
-    //   ['link','image'],
-    //   [{ 'align': []}],
-    // ]}
+    this.removeNote = this.removeNote.bind(this);
+    this.node = React.createRef();
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.dupNote = this.dupNote.bind(this);
   }
 
-  // saveDocument(node) {
-  //   node.focus();
-  //   const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
-  //   node.focus();
-  //   const input = unprivilegedEditor.getText();
-  //   this.setState({body: input})
-  //   node.focus();
-  // }
 
+  dropdownReveal() {
+    document.getElementById("quillDropdownBox").classList.toggle("show-quill-dropdown");
+  }
 
-  updateState(editor){
-    console.log("im firing");
+  dropdownHide() {
+    let obj = document.getElementsByClassName("show-quill-dropdown")[0];
+    if (obj) {
+      setTimeout(() => obj.classList.toggle("show-quill-dropdown"),500);
+    }
+  }
 
+  dupNote() {
+    const notebookId = this.state.notebook_id;
+    const note = {title:`${this.state.title} copy`, body: this.state.body,notebook_id: this.state.notebook_id, user_id:this.props.user.id, preview: this.state.preview};
+    debugger
+    this.props.createNote(notebookId,note);
+  }
+
+  updateState(editor) {
     this.props.updateNote(this.state);
   }
 
@@ -51,11 +56,31 @@ class Editor extends React.Component {
     this.setState({ body: input, preview: inputs });
     const textbox = document.getElementsByClassName('ql-editor')[0];
     textbox.focus();
-    this.timeoutId = setTimeout(this.updateState(editor),3000);
+    this.timeoutId = setTimeout(() => this.updateState(editor),3000);
   }
 
+  removeNote() {
+    this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes());
+  }
 
+  componentDidMount() {
+     document.addEventListener('mousedown', this.handleClickOutside.bind(this));
+   }
 
+  componentWillUnmount() {
+     document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
+   }
+
+  handleClickOutside(e) {
+    if (this.node === e.target) {
+      return;
+    }
+    this.dropdownHide();
+  }
+
+  handleTitleChange(e) {
+    this.setState({title: e.currentTarget.value});
+  }
 
   componentDidUpdate(oldProps) {
     if(oldProps.note.id !== this.props.note.id) {
@@ -70,6 +95,15 @@ class Editor extends React.Component {
 
     return (
       <div className="text-body-div">
+        <div className="quill-dropdown-div">
+          <div id="quillDropdownBox" ref={this.node} className="quill-dropdown">
+            <ul  className="quill-dropdown-items">
+              <li className="quill-dropdown-actions ">Move to...</li>
+              <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
+              <li onClick={this.removeNote} className="quill-dropdown-actions"><Link to="/test/index">Delete note</Link></li>
+            </ul>
+          </div>
+        </div>
         <div className="quill-header-div">
           <div className="quill-header">
             <div className="quill-header-left">
@@ -84,7 +118,7 @@ class Editor extends React.Component {
             </div>
             <div className="quill-header-right">
               <button className="header-share-btn">Share</button>
-              <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="dot-dropdown" ><path fill="#7a8083" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" ></path></svg>
+              <svg onClick={this.dropdownReveal}  width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="dot-dropdown" ><path fill="#7a8083" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" ></path></svg>
             </div>
           </div>
         </div>
@@ -95,7 +129,13 @@ class Editor extends React.Component {
           onChange={this.handleChange}
           value={this.state.body}
           />
-          <input type="text" className="edit-title" value={this.state.title}/>
+        <input
+          type="text"
+          value={this.state.title}
+          placeholder="Title"
+          className="edit-title"
+          onChange={this.handleTitleChange}
+          />
       </div>
     )
   }

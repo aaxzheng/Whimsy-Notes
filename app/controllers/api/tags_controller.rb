@@ -16,8 +16,13 @@ class Api::TagsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     @tag = current_user.tags.find(params[:id])
     if @tag.update(tag_params)
+=======
+    @tag = current_user.notes.find(params[:id])
+    if @tag.update(note_params)
+>>>>>>> master
       render "api/tags/show"
     else
       render json: @tag.errors.full_messages, status: 422
@@ -39,7 +44,7 @@ class Api::TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:tag)
+    params.require(:tag).permit(:tag,:user_id)
   end
 
   def tag_tag_params

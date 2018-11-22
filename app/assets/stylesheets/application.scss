@@ -39,7 +39,7 @@
   display: flex;
   flex: 1;
   position: relative;
-  min-width: 300px;
+  background-color: white;
 }
 
 .quill-header-div {
@@ -88,6 +88,8 @@
   margin-right: 5px;
 }
 
+
+
 .header-notebook-title {
   display: flex;
   align-items: center;
@@ -102,7 +104,7 @@
   vertical-align: middle;
   margin-left:5px;
   font-family: "Raleway",sans-serif;
-  font-weight: 700;
+  font-weight: 200;
 }
 
 .header-nb-title:visited {
@@ -139,6 +141,467 @@
   margin: 2px 0;
 }
 
+.quill-dropdown-div {
+  z-index: 1000;
+  top:16.5px;
+  right:20px;
+  position:absolute;
+}
+
+.quill-dropdown {
+  min-width:150px;
+  margin: 6px 0;
+  display: none; // remove when done
+  z-index: 5;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(99, 114, 130, .16), 0 4px 12px rgba(27, 39, 51, .08);
+  padding: 12px 0;
+  text-align: left;
+  list-style: none;
+  border-radius: 3px;
+  color: #666;
+  font-family: "Raleway",sans-serif;
+  font-size: 14px;
+}
+
+.show-quill-dropdown {
+  display:block;
+}
+
+.quill-dropdown-items {
+  padding:0;
+  margin:0;
+}
+
+.quill-dropdown-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor:pointer;
+  padding: 6px 30px 6px 20px;
+}
+
+.quill-dropdown-actions:hover {
+  color: #555555;
+  background-color: #f5f5f5;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+
+.notebook-index-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 220px;
+  padding: 0 30px;
+  z-index: 100;
+  background-color: white;
+  font-family: "Ubuntu",sans-serif;
+}
+
+.notebook-index {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.nb-index-top {
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  align-items: center;
+  margin-left: auto;
+  font-size: 15px;
+  color: #313131;
+}
+
+.nb-index-top-word {
+  flex: 1;
+  min-width: 200px;
+  font-size: 20px;
+  color: #333333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 12px;
+  font-family: "Ubuntu",sans-serif;
+}
+
+.nb-index-list-items {
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+.nb-header {
+  vertical-align: middle;
+}
+
+.nb-header-span {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 500;
+}
+
+.nb-sort {
+  float: right;
+  margin: 0 0 0 30px;
+}
+
+.new-nb-btn {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #00a82d;
+  padding: 0;
+  vertical-align: middle;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.vert-align {
+  vertical-align: middle;
+}
+
+.nb-break {
+  margin: 8px 0 0 0;
+  font-size: 15px;
+  border: 1px solid #333333;
+  color: #333333;
+}
+
+.nb-table {
+}
+
+.nb-table-header {
+  background: #f8f8f8;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 20px;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  color: #bcbcbc;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: left;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.nb-table-header-item {
+  color: #b3b3b3;
+  flex-basis: 30%;
+  padding:0.5rem;
+}
+
+.nb-table-header-action {
+  color: #b3b3b3;
+  flex-basis: 30%;
+  padding:0.5rem;
+  text-align: right;
+}
+
+.nb-item {
+  height:40px;
+  width:100%;
+  background: white;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  border-left: none;
+  border-right: none;
+  color: #bcbcbc;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: left;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.nb-item:nth-child(2n) {
+  background: #f8f8f8;
+}
+
+.nb-item-title {
+  flex-basis: 30%;
+  color:#313131;
+  padding:0.5rem;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+.nb-item-span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.nb-item-arrow {
+  padding:5px;
+}
+
+.nb-book-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
+  background-position: center;
+  margin-right:5px;
+}
+
+.nb-num {
+  margin: 0 5px;
+  color:#b3b3b3;
+}
+
+.nb-item-action {
+  text-align: right;
+  justify-content: flex-end;
+  padding:0.5rem;
+  color: #777777;
+  padding-top: 10px;
+}
+
+.nb-item-action:focus{
+  outline:none;
+}
+
+.nb-trip-dot {
+  margin:2px 0;
+  float:right;
+  height: 16px;
+  width: 16px;
+  cursor:pointer;
+}
+
+.nb-link {
+  color:black;
+  text-decoration: none;
+}
+
+.nb-link:hover {
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.nb-link:visited {
+  color:inherit;
+  text-decoration: none;
+}
+
+.nb-item-dropdown {
+  z-index:1000;
+  position: relative;
+  right:-2px;
+  top:15px;
+}
+// bottom:calc(100% - 266px);
+// left:calc(100% - 185px);
+
+.nb-item-dropdown-body {
+  min-width:150px;
+  margin: 6px 0;
+  display: none; // remove when done
+  z-index: 5;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(99, 114, 130, .16), 0 4px 12px rgba(27, 39, 51, .08);
+  padding: 12px 0;
+  text-align: left;
+  list-style: none;
+  border-radius: 3px;
+  color: #666;
+  font-family: "Raleway",sans-serif;
+  font-size: 12px;
+}
+
+.show-nb-dropdown {
+  display:block;
+}
+
+.rename-nb {
+  display: block;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:1000
+}
+
+.createNb-div {
+  min-width: 500px;
+  min-height: 200px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  // padding: 20px 25px 25px;
+  font-family:"Ubuntu",sans-serif;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 15px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+}
+
+.close-modal {
+  display: inline-block;
+  background-size: 12px;
+  background-position: center;
+  cursor:pointer;
+  vertical-align: middle;
+  position:absolute;
+  top:25px;
+  right:25px;
+}
+
+#hover-darken:hover {
+  color:#777777;
+}
+
+.form-top-half {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding:20px 25px 25px;
+}
+
+.form-top-header {
+  font-size: 18px;
+  color: #555555;
+  margin-bottom: 15px;
+}
+
+.form-top-description {
+  font-size: 13px;
+  color: #777777;
+  max-width: 500px;
+  margin: 0 0 18px;
+}
+
+.form-top-input {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  height: 40px;
+  background: rgba(255, 255, 255, .7);
+  width: 100%;
+  padding: 0 8px;
+  cursor: text;
+  display: flex;
+  justify-content: center;
+}
+
+.form-top-input-label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: #7a8083;
+  font-weight: 600;
+}
+
+.form-top-input-field {
+  width:100%;
+  border:none;
+  outline:none;
+  box-shadow: none;
+}
+
+.form-bot-half {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-bot-placeholder {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-top: 0;
+  padding: 20px 25px;
+  width: 100%;
+  border-top: 1px solid #ededed;
+}
+
+.form-bot-cancel {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 0px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 0px;
+  user-select: none;
+  margin: 0px 10px 0px 0px;
+  color:#b3b3b3;
+  background: none;
+  background-color: transparent;
+  border: 1px solid #ededed;
+}
+
+.form-bot-submit {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 0px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 0px;
+  user-select: none;
+  background-color: #00a82d;
+  border: none;
+  color: #ffffff;
+  user-select: none;
+}
+//////////////////////////////////////////////////////////////////
+
+.ql-toolbar.ql-snow {
+  border:none;
+  border-bottom: 1px solid #ededed;
+  margin:0 40px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ql-editor {
+  padding:12px 40px 16px;
+  line-height: 1.45!important;
+}
+
 .edit-title {
   display: block;
   font-size: 34px;
@@ -148,4 +611,8 @@
   outline: none;
   z-index: 1;
   cursor: text;
+}
+
+.ql-font-ubuntu {
+  font-family:"Ubuntu",sans-serif;
 }

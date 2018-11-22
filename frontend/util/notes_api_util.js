@@ -27,10 +27,10 @@ export const updateNote = (note) => {
   });
 };
 
-export const createNote = (notebook,note) => {
+export const createNote = (notebookId,note) => {
   return $.ajax ({
     method: "POST",
-    url: `/api/notebooks/${notebook.id}/notes`,
+    url: `/api/notebooks/${notebookId}/notes`,
     data: {note},
   });
 }
