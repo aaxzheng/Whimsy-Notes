@@ -81,7 +81,7 @@ class SideBar extends React.Component {
     });
     return (
       <>
-      <div className="sidebar-body">
+      <div className="sidebar-body shrink">
         <section className="sidebar-header">
           <div onClick={this.props.dropdownReveal} className="header-profile">
             <DropdownContainer />

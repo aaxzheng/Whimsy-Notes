@@ -24,7 +24,7 @@ class NotesIndex extends React.Component {
       )
     });
     return (
-      <div className="index-body">
+      <div className="index-body shrink">
         <header className="index-header">
           <div className="index-name-div">
             <h1 className="index-name">{this.props.query}</h1>
