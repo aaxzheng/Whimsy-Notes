@@ -50,6 +50,7 @@ class SideBar extends React.Component {
     // this.props.fetchNote(13);
     this.props.fetchNotebooks();
     this.props.fetchNotes();
+    this.props.fetchTags();
     // this.props.fetchNotebook(3);
   }
 

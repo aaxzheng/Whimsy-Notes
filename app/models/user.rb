@@ -9,7 +9,7 @@ after_initialize :ensure_session_token
 
 has_many :notes
 has_many :notebooks
-
+has_many :tags
 
 def self.find_by_credentials(username, password)
   user = User.find_by(username: username)
