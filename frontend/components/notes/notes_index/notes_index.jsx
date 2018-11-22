@@ -18,7 +18,6 @@ class NotesIndex extends React.Component {
 
   render() {
     const notes = this.state.notes || [];
-    debugger
     const index = notes.map((note,idx) => {
       return (
         <NotesIndexItem key={idx} note={note} fetchNotes={this.props.fetchNotes} fetchNote={this.props.fetchNote} />

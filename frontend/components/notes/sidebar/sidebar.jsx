@@ -18,6 +18,7 @@ class SideBar extends React.Component {
      document.addEventListener('mousedown', this.handleClickOutside);
      this.props.fetchNotebooks();
      this.props.fetchNotes();
+     this.props.fetchTags();
    }
   componentDidUpdate(oldProps) {
     if (oldProps.notebooks !== this.props.notebooks) {
@@ -63,16 +64,6 @@ class SideBar extends React.Component {
      }
    }
 
-<<<<<<< HEAD
-  componentDidMount() {
-    // this.props.fetchNote(13);
-    this.props.fetchNotebooks();
-    this.props.fetchNotes();
-    this.props.fetchTags();
-    // this.props.fetchNotebook(3);
-  }
-=======
->>>>>>> master
 
   render() {
     const notebooks = this.props.notebooks || [];
