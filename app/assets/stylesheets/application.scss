@@ -616,3 +616,59 @@
 .ql-font-ubuntu {
   font-family:"Ubuntu",sans-serif;
 }
+
+
+//////////////////////////////////////
+
+.tags-index {
+  padding: 25px 0;
+}
+
+.tags-ul {
+  margin-bottom: 9px;
+  font-size: 15px;
+  color: #333333;
+  margin-left: 0;
+  padding-inline-start: 0;
+  line-height: 19.5px;
+}
+
+.tag-item {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #333333;
+}
+
+.tag-item-num {
+  margin:0.5px;
+  opacity: 0.5;
+}
+
+.tags-index-item-div {
+  margin-bottom: 32px;
+}
+
+.tag-dropdown {
+  display: inline-flex;
+  align-items: center;
+  line-height: 24px;
+  margin-left: -10px;
+  padding: 0 10px
+}
+
+.tag-dropdown:hover {
+  border-radius:12px;
+  background-color: #f0f1f1;
+}
+
+.tag-dropdown:hover .tag-arrow {
+  fill:#a6a6a6;
+}
+
+.tag-arrow {
+  fill:none;
+}
+
+.tag-dropdown-btn {
+  margin-left: 5px;
+}

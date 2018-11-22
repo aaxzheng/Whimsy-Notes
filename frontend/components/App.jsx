@@ -10,7 +10,7 @@ import NotesIndexContainer from './notes/notes_index/notes_index_container';
 import TextEditorContainer from './notes/textbox/editor_container';
 import NotebookIndexContainer from './notebooks/notebook_index_container';
 import NotebookModalContainer from './notebooks/notebook_modal_container';
-
+import TagsIndexContainer from './tags/tags_index_container';
 
 const App = () => (
   <div className="main">
@@ -25,6 +25,7 @@ const App = () => (
         <ProtectedRoute exact path="/test/index/editor" component={TextEditorContainer} />
       </div>
       <ProtectedRoute path="/test/notebooks" component={NotebookIndexContainer}/>
+      <ProtectedRoute path="/test/tags" component={TagsIndexContainer}/>
     </div>
   </div>
 );
