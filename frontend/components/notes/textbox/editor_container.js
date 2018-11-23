@@ -9,7 +9,7 @@ const msp = (state,ownProps) => {
   }
 
   const note = state.entities.notes[state.entities.results.currentNote] || {body:""}
-  let notebook = {title:"Inbox"};
+  let notebook = {title:"<Inbox>"};
   if (state.entities.results.currentNote) {
     notebook = state.entities.notebooks[note.notebook.id]
   }

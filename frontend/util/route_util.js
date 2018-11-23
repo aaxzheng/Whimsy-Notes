@@ -6,7 +6,7 @@ import Splash from '../components/splash/splash'
 const Auth = ({component: Component, path, loggedIn, exact}) => {
   return (
     <Route path={path} exact={exact} render={(props) => (
-    loggedIn ? <Redirect to="/test" /> : <Component{...props} />
+    loggedIn ? <Redirect to="/test/index" /> : <Component{...props} />
   )} />);
 };
 
