@@ -65,6 +65,24 @@
   white-space: nowrap;
 }
 
+.edit-title {
+  display: block;
+  font-size: 13px;
+  width: 70%;
+  margin-left: 5px;
+  outline: none;
+  z-index: 1;
+  border: none;
+  cursor: text;
+  color:#7a8083;
+  margin-top: 2px;
+}
+
+.edit-title[type="text"] {
+  font-size:13px;
+  color:#7a8083;
+}
+
 .expand-btn {
   display: inline-block;
   vertical-align: middle;
@@ -603,18 +621,10 @@
 .ql-editor {
   padding:12px 40px 16px;
   line-height: 1.45!important;
+  font-size: 18px;
 }
 
-.edit-title {
-  display: block;
-  font-size: 34px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 8px 40px 4px;
-  outline: none;
-  z-index: 1;
-  cursor: text;
-}
+
 
 .ql-font-ubuntu {
   font-family:"Ubuntu",sans-serif;

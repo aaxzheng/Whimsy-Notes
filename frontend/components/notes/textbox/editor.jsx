@@ -46,7 +46,7 @@ class Editor extends React.Component {
     this.props.createNote(notebookId,note);
   }
 
-  updateState(editor) {
+  updateState() {
     this.props.updateNote(this.state);
   }
 
@@ -56,7 +56,7 @@ class Editor extends React.Component {
     this.setState({ body: input, preview: inputs });
     const textbox = document.getElementsByClassName('ql-editor')[0];
     textbox.focus();
-    this.timeoutId = setTimeout(() => this.updateState(editor),3000);
+    this.timeoutId = setTimeout(() => this.updateState(),3000);
   }
 
   removeNote() {
@@ -79,7 +79,9 @@ class Editor extends React.Component {
   }
 
   handleTitleChange(e) {
+    clearTimeout(this.timeoutId);
     this.setState({title: e.currentTarget.value});
+    this.timeoutId = setTimeout(() => this.updateState(),3000);
   }
 
   componentDidUpdate(oldProps) {
@@ -116,8 +118,17 @@ class Editor extends React.Component {
               <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className="quill-header-divide"><g fill="none"><path d="M0 0h20v20H0z"></path><path fill="#CCC" d="M10 18h1V2h-1z"></path></g></svg>
               <div className="header-notebook-title">
                 <svg xmlns="http://www.w3.org/2000/svg" className="nb-icon" width="14" height="14" viewBox="0 0 14 14"><path fill="#7a8083" d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"></path></svg>
-                <Link to="/test/index" className="header-nb-title">{this.props.notebook.title}</Link>
+                <Link to="/test/index" className="header-nb-title">{this.props.notebook.title}  --</Link>
               </div>
+              <input
+                type="text"
+                value={this.state.title}
+                placeholder="Title"
+                className="edit-title"
+                onChange={this.handleTitleChange}
+                spellCheck="false"
+                />
+
             </div>
             <div className="quill-header-right">
               <button className="header-share-btn">Share</button>
@@ -132,13 +143,7 @@ class Editor extends React.Component {
           onChange={this.handleChange}
           value={this.state.body}
           />
-        <input
-          type="text"
-          value={this.state.title}
-          placeholder="Title"
-          className="edit-title"
-          onChange={this.handleTitleChange}
-          />
+
       </div>
     )
   }
