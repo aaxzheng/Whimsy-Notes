@@ -26,7 +26,10 @@ class Search extends React.Component {
   }
 
   sendResults() {
-    this.props.fetchArray(this.state.results,this.state.query);
+    if (this.state.query === "") {
+      this.state.results = this.props.notes
+    }
+    this.props.fetchArray("search",this.state.results,this.state.query);
     this.state.results = [];
   }
 

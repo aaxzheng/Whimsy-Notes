@@ -9,10 +9,16 @@ const msp = (state,ownProps) => {
   }
 
   const note = state.entities.notes[state.entities.results.currentNote] || {body:""}
+  let notebook = {title:"Inbox"};
+  if (state.entities.results.currentNote) {
+    notebook = state.entities.notebooks[note.notebook.id]
+  }
+
   return {
     note: note,
     user: state.entities.users[state.session.currentUserId],
     currentNotebookId: notebookId,
+    notebook: notebook,
   }
 }
 

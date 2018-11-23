@@ -27,7 +27,7 @@ const mdp = (dispatch) => {
     fetchNote: (id) => dispatch(fetchNote(id)),
     logout: () => dispatch(logout()),
     createNote: (notebookId,note) => dispatch(createNote(notebookId,note)),
-    fetchArray: (array,query) => dispatch(fetchArray(array,query)),
+    fetchArray: (obj,array,query) => dispatch(fetchArray(obj,array,query)),
     fetchTags: () => dispatch(fetchTags()),
     dropdownReveal: dropdownReveal,
   };

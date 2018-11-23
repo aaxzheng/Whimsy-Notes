@@ -4,16 +4,31 @@ import {fetchNotes, fetchNote} from '../../../actions/note_actions';
 
 
 const msp = (state,ownProps) => {
-  let array = null;
-  if (state.entities.results.array.length > 0) {
-    array = state.entities.results.array;
+  let notes;
+  switch(state.entities.results.obj) {
+    case "notebook":
+      const notebook = state.entities.notebooks[state.entities.results.array];
+      notes = notebook.note_ids.map(noteId => state.entities.notes[noteId])
+      break;
+    case "search":
+      notes = state.entities.results.array;
+      break;
+    default:
+      notes = Object.values(state.entities.notes);
+      break;
   }
 
-  const notes = array || Object.values(state.entities.notes);
+
+  let tag = null;
+  if (state.entities.results.currentTag) {
+    tag = state.entities.tags[state.entities.results.currentTag];
+  }
+
   const query = state.entities.results.query || "All Notes";
   return {
-    notes: notes,
     query: query,
+    tag: tag,
+    notes: notes,
   }
 }
 

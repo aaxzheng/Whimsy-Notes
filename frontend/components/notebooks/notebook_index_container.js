@@ -15,7 +15,7 @@ const mdp = (dispatch) => {
     fetchNotebooks: () => dispatch(fetchNotebooks()),
     createNotebook: (notebook) => dispatch(createNotebook(notebook)),
     deleteNotebook: (id) => dispatch(deleteNotebook(id)),
-    fetchArray: (results,query) => dispatch(fetchArray(results,query)),
+    fetchArray: (obj,results,query) => dispatch(fetchArray(obj,results,query)),
     openModal: (modal) => dispatch(openModal(modal)),
   }
 }

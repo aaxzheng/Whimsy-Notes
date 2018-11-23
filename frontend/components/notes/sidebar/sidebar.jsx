@@ -36,7 +36,7 @@ class SideBar extends React.Component {
    }
 
    showAllNotes() {
-     this.props.fetchArray(this.props.notes,"All Notes");
+     this.props.fetchArray("all",this.props.notes,"All Notes");
    }
 
    stallReveal() {
@@ -49,11 +49,11 @@ class SideBar extends React.Component {
 
    showNotebookNotes(notebook) {
      this.props.fetchNotebook(notebook.id);
-     this.props.fetchArray(notebook.notes,notebook.title);
+     this.props.fetchArray("notebook",notebook.id,notebook.title);
    }
 
    addNewNote() {
-     const notebookId = this.props.currentNotebookId || this.props.notebooks[0].notebook.id;
+     const notebookId = this.props.currentNotebookId || this.props.notebooks[0].id;
      const note = {body:"", title:"", notebook_id: notebookId, user_id:this.user.id}
      this.props.createNote(notebookId,note).then(() => this.props.fetchNotes());
    }

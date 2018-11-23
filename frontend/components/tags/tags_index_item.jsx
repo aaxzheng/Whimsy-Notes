@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 class TagsIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    
   }
 
   dropdownHide() {
@@ -20,9 +21,7 @@ class TagsIndexItem extends React.Component {
   }
 
   sendData(tag) {
-    const array = tag.tagged;
-    const query = tag.tag;
-    this.props.fetchArray(array,query);
+    this.props.fetchTag(tag.id);
   }
 
   removeTag(id) {
@@ -36,7 +35,7 @@ class TagsIndexItem extends React.Component {
       <li className="tag-item">
         <div className="tag-body">
           <Link to="/test/index" onClick={() => this.sendData(tag)} className="body-tag-name">{tag.tag}</Link>
-          <span className="tag-item-num">({tag.tagged.length})</span>
+          <span className="tag-item-num">({tag.notes.length})</span>
           <div onFocus={this.dropdownReveal(tag.id)} tabIndex="0" onBlur={this.dropdownHide} className="tag-body-btn" >
             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" ><path className="tag-arrow" fill="black" d="M7 2L4 5 1 2"></path></svg>
           </div>

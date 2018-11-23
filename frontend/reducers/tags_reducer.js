@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_TAG:
-      return merge({},state,action.tag);
+      return merge({},state,{[action.tag.id]: action.tag});
     case RECEIVE_TAGS:
       return merge({},action.tags);
     case REMOVE_TAG:

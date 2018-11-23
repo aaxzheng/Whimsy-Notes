@@ -6,9 +6,10 @@ export const REMOVE_NOTE = "REMOVE_NOTE";
 export const RECEIVE_ARRAY = "RECEIVE_ARRAY";
 
 
-export const receiveArray = (array,query) => {
+export const receiveArray = (obj,array,query) => {
   return {
     type: RECEIVE_ARRAY,
+    obj,
     array,
     query,
   }
@@ -28,10 +29,11 @@ export const receiveNotes = (notes) => {
   };
 };
 
-export const removeNote = (noteId) => {
+export const removeNote = (note,noteId) => {
   return {
     type: REMOVE_NOTE,
     noteId,
+    note,
   };
 };
 
@@ -61,10 +63,10 @@ export const updateNote = (note) => dispatch => {
 
 export const deleteNote = (id) => dispatch => {
   return NoteAPIUtil.deleteNote(id).then((resp) => {
-    dispatch(removeNote(id));
+    dispatch(removeNote(resp,id));
   });
 };
 
-export const fetchArray = (results,query) => dispatch => {
-  return dispatch(receiveArray(results,query));
+export const fetchArray = (obj,results,query) => dispatch => {
+  return dispatch(receiveArray(obj,results,query));
 }

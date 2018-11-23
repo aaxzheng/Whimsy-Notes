@@ -12,7 +12,7 @@ const modules = {toolbar: [
   [{ 'size': ['small', false, 'large', 'huge'] }],
   [{ 'color': [] },'bold','italic','underline','strike', {'background': [] },'code-block'],
   [{'list':'bullet'},{'list':'ordered'}],
-  ['link','image'],
+  [{'script': 'super'},{'script': 'sub'}],
   [{ 'align': []}],
 ]};
 
@@ -35,14 +35,14 @@ class Editor extends React.Component {
   dropdownHide() {
     let obj = document.getElementsByClassName("show-quill-dropdown")[0];
     if (obj) {
-      setTimeout(() => obj.classList.toggle("show-quill-dropdown"),500);
+      setTimeout(() => obj.classList.toggle("show-quill-dropdown"),300);
     }
   }
 
   dupNote() {
     const notebookId = this.state.notebook_id;
     const note = {title:`${this.state.title} copy`, body: this.state.body,notebook_id: this.state.notebook_id, user_id:this.props.user.id, preview: this.state.preview};
-    debugger
+
     this.props.createNote(notebookId,note);
   }
 
@@ -116,12 +116,12 @@ class Editor extends React.Component {
               <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className="quill-header-divide"><g fill="none"><path d="M0 0h20v20H0z"></path><path fill="#CCC" d="M10 18h1V2h-1z"></path></g></svg>
               <div className="header-notebook-title">
                 <svg xmlns="http://www.w3.org/2000/svg" className="nb-icon" width="14" height="14" viewBox="0 0 14 14"><path fill="#7a8083" d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"></path></svg>
-                <Link to="/test/index" className="header-nb-title">Inbox</Link>
+                <Link to="/test/index" className="header-nb-title">{this.props.notebook.title}</Link>
               </div>
             </div>
             <div className="quill-header-right">
               <button className="header-share-btn">Share</button>
-              <svg onClick={this.dropdownReveal}  width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="dot-dropdown" ><path fill="#7a8083" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" ></path></svg>
+              <svg onFocus={this.dropdownReveal} tabIndex="0" onBlur={this.dropdownHide}  width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="dot-dropdown" ><path fill="#7a8083" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" ></path></svg>
             </div>
           </div>
         </div>

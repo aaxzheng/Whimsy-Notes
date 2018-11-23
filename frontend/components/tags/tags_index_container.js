@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 import TagsIndex from './tags_index';
-import {fetchTags,deleteTag} from '../../actions/tag_actions';
-import {fetchArray} from '../../actions/note_actions';
+import {fetchTags,deleteTag,fetchTag} from '../../actions/tag_actions';
 
 const msp = (state,oldProps) => {
   return {
@@ -13,7 +12,7 @@ const mdp = (dispatch) => {
   return {
     fetchTags: () => dispatch(fetchTags()),
     deleteTag: (id) => dispatch(deleteTag(id)),
-    fetchArray: (array,query) => dispatch(fetchArray(array,query)),
+    fetchTag: (id) => dispatch(fetchTag(id)),
   }
 }
 

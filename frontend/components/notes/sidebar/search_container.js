@@ -16,7 +16,7 @@ const mdp = (dispatch) => {
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNote: (id) => dispatch(fetchNote(id)),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-    fetchArray: (results,query) => dispatch(fetchArray(results,query)),
+    fetchArray: (obj,results,query) => dispatch(fetchArray(obj,results,query)),
   };
 };
 
