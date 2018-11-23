@@ -29,7 +29,7 @@ class IndexItem extends React.Component {
   }
 
   removeNb() {
-    this.props.delete(this.props.notebook.id);
+    this.props.deleteNotebook(this.props.notebook.id);
   }
 
 
