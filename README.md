@@ -17,7 +17,7 @@ The ability to create, read, update and destroy notes, and to certain extents no
 ## How to Use
 1. Click Log in or Sign Up in either the top right or bottom of the splash page.
 2. Either create a new account or proceed with a demo user.
-3. Pressing the Green button on the sidebar called Add a New Note will generate a new note for you to edit.
+3. Pressing the Green button on the sidebar called New Note will generate a new note for you to edit.
 4. Click the note to begin editing it and allow a moment for the application to save your work when done.
 
 ## Future Features 
