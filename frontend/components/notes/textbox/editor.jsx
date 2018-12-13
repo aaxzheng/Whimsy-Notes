@@ -61,10 +61,7 @@ class Editor extends React.Component {
   }
 
   removeNote() {
-    // this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes());
-    // debugger;
-    this.setState({ trashed: true }).then(()=>this.updateState())
-    // debugger;
+    this.setState({ trashed: true }).then(()=>this.updateState());
   }
 
   componentDidMount() {
@@ -109,7 +106,7 @@ class Editor extends React.Component {
             <ul  className="quill-dropdown-items">
               <li className="quill-dropdown-actions ">Move to...</li>
               <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
-              <li onClick={this.removeNote} className="quill-dropdown-actions"><Link className="quill-drop-actions-link" to="/test/index">Delete note</Link></li>
+              <li  className="quill-dropdown-actions"><Link onClick={this.removeNote} className="quill-drop-actions-link" to="/test/index">Delete note</Link></li>
             </ul>
           </div>
         </div>
