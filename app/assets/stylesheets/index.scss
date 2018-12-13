@@ -181,3 +181,23 @@
 .notebook-item:visited {
   text-decoration: none;
 }
+
+.empty-trash-btn {
+  border: solid 1px #ff7070;
+  margin-top: 10px;
+  color: #ff7070;
+  max-width: 106px;
+  max-height: 26px;
+  font-size: 12px;
+  padding:10px 15px;
+  font-family: "Ubuntu",sans-serif;
+  line-height: 15px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.empty-trash-btn:hover {
+  background-color: #ff7070;
+  color:#ffffff;
+  cursor:pointer;
+}

@@ -5,10 +5,16 @@ import {fetchNotes, fetchNote} from '../../../actions/note_actions';
 
 const msp = (state,ownProps) => {
   let notes;
+  let trash = false
   switch(state.entities.results.obj) {
+    case "trash":
+    // debugger;
+      notes = Object.values(state.entities.notes);
+      trash = true;
+      break;
     case "notebook":
       const notebook = state.entities.notebooks[state.entities.results.array];
-      notes = notebook.note_ids.map(noteId => state.entities.notes[noteId])
+      notes = notebook.note_ids.map(noteId => state.entities.notes[noteId]);
       break;
     case "search":
       notes = state.entities.results.array;
@@ -29,6 +35,7 @@ const msp = (state,ownProps) => {
     query: query,
     tag: tag,
     notes: notes,
+    trash: trash,
   }
 }
 

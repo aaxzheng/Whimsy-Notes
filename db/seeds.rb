@@ -26,7 +26,7 @@ laotze = Note.create(title: "Reflection on Reality", body: "Once upon a time, I 
                 purposes a butterfly. I was conscious only of my happiness as a butterfly, unaware that I was myself.
                 Soon I awaked, and there I was, veritably myself again. Now I do not know whether I was then a man
                 dreaming I was a butterfly, or whether I am now a butterfly, dreaming I am a man." )
-check = Note.create( title: "To do", body: "Double check my proposal!", user_id: demo.id, notebook_id: app.id, preview:"Double check my proposal!")
+check = Note.create( title: "To do", body: "Double check my proposal!", user_id: demo.id, notebook_id: app.id, preview:"Double check my proposal!", trashed:true)
 mind = Note.create(title: "Reflection on Mind", body: "Is the mind and brain connected?", user_id: demo.id, notebook_id: shower.id, preview:"Is the mind and brain connected?")
 soul = Note.create(title: "Reflection on Soul", body:"The soul is a component of our being much like our mind but has no physical manifestation which it is linked to.", user_id: demo.id, notebook_id: shower.id, preview:"The soul is a component of our being much like our mind but has no physical manifestation which it is linked to.")
 mvp = Note.create(title:"MVPs", body:"MVP List: Hosting on Heroku User Auth Notes Notebook Tags Rich text-editing Production README", user_id: demo.id, notebook_id:app.id, preview:"MVP List: 1)Hosting on Heroku 2)User Auth 3)Notes 4)Notebook 5)Tags 6)Rich text-editing 7)Production README")

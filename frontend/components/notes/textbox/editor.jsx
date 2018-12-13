@@ -25,7 +25,8 @@ class Editor extends React.Component {
     this.node = React.createRef();
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.dupNote = this.dupNote.bind(this);
-  }
+    this.updateState = this.updateState.bind(this);
+    }
 
 
   dropdownReveal() {
@@ -60,7 +61,10 @@ class Editor extends React.Component {
   }
 
   removeNote() {
-    this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes());
+    // this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes());
+    // debugger;
+    this.setState({ trashed: true }).then(()=>this.updateState())
+    // debugger;
   }
 
   componentDidMount() {

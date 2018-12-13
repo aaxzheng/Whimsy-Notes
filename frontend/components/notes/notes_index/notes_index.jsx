@@ -35,13 +35,40 @@ class NotesIndex extends React.Component {
 
 
     let tag;
+    let trash;
     let notes = this.state.notes || [];
+
+    if (this.state.trash) {
+      let trashBin = [];
+      for (let i = 0; i < this.state.notes.length; i++) {
+        if (this.state.notes[i].trashed) {
+          trashBin.push(this.state.notes[i]);
+        }
+      }
+      debugger
+      notes = trashBin;
+      trash = (
+        <div onClick={this.props.deleteNote} className="empty-trash-btn">Empty Trash</div>
+      )
+    } else {
+      let notTrash = [];
+      for (let i = 0; i < this.state.notes.length; i++) {
+        if (this.state.notes[i].trashed === false) {
+          notTrash.push(this.state.notes[i]);
+        }
+      }
+      notes = notTrash;
+    }
+
+
 
     if (this.state.tag) {
       let results = [];
       for (let i = 0; i < this.state.tag.notes.length; i++) {
         if (notes.indexOf(notes[i]) !== -1) {
-        results.push(this.state.tag.notes[i]);
+          if (notes[i].trashed == false && !this.state.trash) {
+            results.push(this.state.tag.notes[i]);
+          }
         }
       }
       notes = results
@@ -54,6 +81,7 @@ class NotesIndex extends React.Component {
         </div>
       )
 
+      // this.setState({notes: results});
     }
     const index = notes.map((note,idx) => {
       return (
@@ -65,6 +93,7 @@ class NotesIndex extends React.Component {
         <header className="index-header">
           <div className="index-name-div">
             <h1 className="index-name">{this.props.query}</h1>
+            {trash}
           </div>
           <div className="index-number">
             <span className="num-notes"> {notes.length} Notes</span>

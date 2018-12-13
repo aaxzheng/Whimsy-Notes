@@ -34,14 +34,14 @@ class Api::NotesController < ApplicationController
 
 
   def destroy
-     @note = current_user.notes.find(params[:id])
-     @tags = @note.tags
-     @note.destroy
-     render "api/notes/show"
+     @notes = current_user.notes.where(notes.trashed == true)
+     # @tags = @note.tags
+     @notes.destroy
+     render "api/notes/index"
   end
 
   def note_params
-    params.require(:note).permit(:body,:title,:preview,:notebook_id,:user_id)
+    params.require(:note).permit(:body,:title,:preview,:notebook_id,:user_id,:trashed)
   end
 
 end
