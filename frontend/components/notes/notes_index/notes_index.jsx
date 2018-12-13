@@ -45,8 +45,8 @@ class NotesIndex extends React.Component {
           trashBin.push(this.state.notes[i]);
         }
       }
-      debugger
       notes = trashBin;
+      // this.props.fetchArray("trash",notes,"Trash");
       trash = (
         <div onClick={this.props.deleteNote} className="empty-trash-btn">Empty Trash</div>
       )

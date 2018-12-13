@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import NotesIndex from './notes_index';
-import {fetchNotes, fetchNote} from '../../../actions/note_actions';
+import {fetchNotes, fetchNote, fetchArray} from '../../../actions/note_actions';
 
 
 const msp = (state,ownProps) => {
@@ -43,6 +43,7 @@ const mdp = (dispatch) => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNote: (note) => dispatch(fetchNote(note)),
+    fetchArray: (obj,array,query) => dispatch(fetchArray(obj,array,query)),
   }
 }
 
