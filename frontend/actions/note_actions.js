@@ -4,7 +4,7 @@ export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const RECEIVE_NOTES = "RECEIVE_NOTES";
 export const REMOVE_NOTE = "REMOVE_NOTE";
 export const RECEIVE_ARRAY = "RECEIVE_ARRAY";
-
+export const REMOVE_TRASH = "REMOVE_TRASH";
 
 export const receiveArray = (obj,array,query) => {
   return {
@@ -36,6 +36,13 @@ export const removeNote = (note,noteId) => {
     note,
   };
 };
+
+export const removeTrash = (trash) => {
+  return {
+    type: REMOVE_TRASH,
+    trash,
+  }
+}
 
 export const fetchNote = (id) => dispatch => {
   return NoteAPIUtil.fetchNote(id).then((resp)=> {
@@ -69,4 +76,10 @@ export const deleteNote = (id) => dispatch => {
 
 export const fetchArray = (obj,results,query) => dispatch => {
   return dispatch(receiveArray(obj,results,query));
-}
+};
+
+export const deleteTrash = () => dispatch => {
+  return NoteAPIUtil.deleteTrash().then((resp) => {
+    return dispatch(removeTrash(resp));
+  });
+};

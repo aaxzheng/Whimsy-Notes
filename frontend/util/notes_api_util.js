@@ -34,3 +34,10 @@ export const createNote = (notebookId,note) => {
     data: {note},
   });
 }
+
+export const deleteTrash = () => {
+  return $.ajax ({
+    method: "DELETE",
+    url: `/api/notes/deleted`,
+  })
+}

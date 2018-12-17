@@ -48,7 +48,7 @@ class NotesIndex extends React.Component {
       notes = trashBin;
       // this.props.fetchArray("trash",notes,"Trash");
       trash = (
-        <div onClick={this.props.deleteNote} className="empty-trash-btn">Empty Trash</div>
+        <div onClick={this.props.deleteTrash} className="empty-trash-btn">Empty Trash</div>
       )
     } else {
       let notTrash = [];

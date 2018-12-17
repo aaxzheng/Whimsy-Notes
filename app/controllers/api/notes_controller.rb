@@ -34,9 +34,19 @@ class Api::NotesController < ApplicationController
 
 
   def destroy
-     @notes = current_user.notes.where(notes.trashed == true)
+     @note = current_user.notes.find(params[:id])
      # @tags = @note.tags
-     @notes.destroy
+     @note.destroy
+     render "api/notes/index"
+  end
+
+  def empty_trash
+     @notes = current_user.notes.where(trashed: true)
+     # @tags = @note.tags
+     @notes.each do |note|
+       debugger;
+       note.destroy
+     end
      render "api/notes/index"
   end
 
