@@ -7,6 +7,7 @@ class NotesIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = merge({},this.props)
+    // debugger;
   }
 
 
@@ -17,6 +18,31 @@ class NotesIndexItem extends React.Component {
     if (oldProps.note !== this.props.note) {
       this.setState(merge({},this.props));
     }
+  }
+
+  noteTime() {
+    const months = ["January","Febuary","March","April","May","June","July","August","September","October","November","December"]
+    let old_update = new Date();
+    let updated = new Date(this.props.note.updated_at);
+    let last_update = Math.floor(((((old_update - updated) / 1000)/60)/60)/24); //days
+    if (last_update < 1) {
+      last_update = Math.floor(((((old_update - updated) / 1000))/60)/60); //hours
+      if (last_update < 1) {
+        last_update = Math.floor((((old_update - updated) / 1000))/60); //minutes
+        if (last_update < 1) {
+          last_update = "a few seconds ago";
+        } else {
+          return `${last_update} minutes ago`
+        }
+      } else {
+        return `${last_update} hours ago`
+      }
+    }else if (last_update > 6) {
+      return `${months[updated.getMonth()]} ${updated.getDate()}`
+    } else {
+      return `${last_update} days ago`
+    }
+    return last_update;
   }
 
   sendNote() {
@@ -38,7 +64,7 @@ class NotesIndexItem extends React.Component {
         </div>
 
         <div className="item-date">
-          Yesterday (not yet implemented)
+          {this.noteTime()}
         </div>
       </Link>
     )
