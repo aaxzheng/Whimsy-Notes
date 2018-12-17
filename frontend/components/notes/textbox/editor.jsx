@@ -19,7 +19,7 @@ const modules = {toolbar: [
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = merge({},this.props.note);
+    this.state = this.props.note
     this.handleChange = this.handleChange.bind(this);
     this.removeNote = this.removeNote.bind(this);
     this.node = React.createRef();
@@ -61,7 +61,7 @@ class Editor extends React.Component {
   }
 
   removeNote() {
-    this.setState({ trashed: true }).then(()=>this.updateState());
+      this.setState({ trashed: true },this.updateState);
   }
 
   componentDidMount() {
