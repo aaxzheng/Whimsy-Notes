@@ -13,9 +13,9 @@ export default (state = {}, action) => {
       delete newState[action.noteId];
       return newState;
     case REMOVE_TRASH:
-      const nuState = merge({},state);
-      delete newState[action.trash];
-      return newState;
+      debugger
+      const nuState = merge({},action.trash);
+      return nuState;
     default:
       return state;
   }

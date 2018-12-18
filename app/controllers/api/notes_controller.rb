@@ -44,9 +44,9 @@ class Api::NotesController < ApplicationController
      @notes = current_user.notes.where(trashed: true)
      # @tags = @note.tags
      @notes.each do |note|
-       debugger;
        note.destroy
      end
+     @notes = current_user.notes.where(trashed: false)
      render "api/notes/index"
   end
 

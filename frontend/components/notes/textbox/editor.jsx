@@ -57,11 +57,12 @@ class Editor extends React.Component {
     this.setState({ body: input, preview: inputs });
     const textbox = document.getElementsByClassName('ql-editor')[0];
     textbox.focus();
-    this.timeoutId = setTimeout(() => this.updateState(),3000);
+    this.timeoutId = setTimeout(() => this.updateState(),1500);
   }
 
   removeNote() {
-      this.setState({ trashed: true },this.updateState);
+      this.setState({trashed: !this.state.trashed},this.updateState);
+
   }
 
   componentDidMount() {
@@ -106,7 +107,7 @@ class Editor extends React.Component {
             <ul  className="quill-dropdown-items">
               <li className="quill-dropdown-actions ">Move to...</li>
               <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
-              <li  className="quill-dropdown-actions"><Link onClick={this.removeNote} className="quill-drop-actions-link" to="/test/index">Delete note</Link></li>
+              <li  className="quill-dropdown-actions"><Link onClick={this.removeNote} className="quill-drop-actions-link" to="/test/index/editor">Delete note</Link></li>
             </ul>
           </div>
         </div>

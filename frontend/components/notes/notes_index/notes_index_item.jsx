@@ -21,7 +21,7 @@ class NotesIndexItem extends React.Component {
   }
 
   noteTime() {
-    const months = ["January","Febuary","March","April","May","June","July","August","September","October","November","December"]
+    const months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec"]
     let old_update = new Date();
     let updated = new Date(this.props.note.updated_at);
     let last_update = Math.floor(((((old_update - updated) / 1000)/60)/60)/24); //days
@@ -38,7 +38,7 @@ class NotesIndexItem extends React.Component {
         return `${last_update} hours ago`
       }
     }else if (last_update > 6) {
-      return `${months[updated.getMonth()]} ${updated.getDate()}`
+      return `${months[updated.getMonth()]} ${updated.getDate()}` // if longer than a week
     } else {
       return `${last_update} days ago`
     }
