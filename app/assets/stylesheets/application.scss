@@ -638,7 +638,25 @@
   font-family:"Ubuntu",sans-serif;
 }
 
+.edit-tag-footer {
+  height: 50px;
+  border-top: 1px solid #ececec;
+  display: flex;
+  align-items: center;
+}
 
+.show-edit-tags {
+  min-width:200px;
+  flex:1;
+  display:flex;
+  position:relative;
+  align-items: center;
+}
+
+.edit-tag-svg {
+  flex-shrink: 0;
+  margin: 0 10px 0 15px;
+}
 //////////////////////////////////////
 
 .tags-index {

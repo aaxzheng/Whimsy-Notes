@@ -14,11 +14,19 @@ const msp = (state,ownProps) => {
     notebook = state.entities.notebooks[note.notebook.id]
   }
 
+  const tag = [];
+  if (note.tag_ids) {
+    for (let i = 0; i < note.tag_ids.length; i++) {
+      tag.push(state.entities.tags[note.tag_ids[i]]);
+    }
+  }
+
   return {
     note: note,
     user: state.entities.users[state.session.currentUserId],
     currentNotebookId: notebookId,
     notebook: notebook,
+    tag: tag,
   }
 }
 
