@@ -3,7 +3,7 @@ class Api::TagsController < ApplicationController
   def create
     @tag = current_user.tags.find_by_tag(params[:tag][:tag]) || Tag.new(tag_params)
     if @tag.save
-      @tag.tag_notes.create({tag_id: @tag.id,note_id: params[:note_id]})
+      @tag.tag_notes.create({tag_id: @tag.id,note_id: params[:tag][:note_id]})
       render "api/tags/show"
     else
       render json: @tag.errors.full_messages, status: 422
