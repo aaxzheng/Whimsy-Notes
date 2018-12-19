@@ -18,7 +18,7 @@ class NotesIndex extends React.Component {
   }
 
   removeTag() {
-    this.setState({tag: null});
+    this.setState({tag: null},this.props.clearTag)
   }
 
   intersect(a, b) {

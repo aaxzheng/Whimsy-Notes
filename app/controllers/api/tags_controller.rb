@@ -1,9 +1,9 @@
 class Api::TagsController < ApplicationController
 
   def create
-    @tag = current_user.tags.find(params[:id]) || Tag.new(tag_params)
-    @tag.tag_note.create(tag_note_params)
+    @tag = current_user.tags.find_by_tag(params[:tag][:tag]) || Tag.new(tag_params)
     if @tag.save
+      @tag.tag_notes.create({tag_id: @tag.id,note_id: params[:note_id]})
       render "api/tags/show"
     else
       render json: @tag.errors.full_messages, status: 422
@@ -41,8 +41,8 @@ class Api::TagsController < ApplicationController
     params.require(:tag).permit(:tag,:user_id)
   end
 
-  def tag_tag_params
-    params.require(:tag_tag).permit(:tag_id)
+  def tag_note_params
+    params.require(:tag_note).permit(:tag_id,:note_id)
   end
 
 end

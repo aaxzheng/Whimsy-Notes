@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import TagsIndex from './tags_index';
-import {fetchTags,deleteTag,fetchTag} from '../../actions/tag_actions';
+import {fetchTags,deleteTag,fetchTag,clearTag} from '../../actions/tag_actions';
 
 const msp = (state,oldProps) => {
   return {

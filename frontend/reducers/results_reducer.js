@@ -1,7 +1,7 @@
 import {RECEIVE_ARRAY} from '../actions/note_actions';
 import {RECEIVE_NOTEBOOK} from '../actions/notebook_actions';
 import {RECEIVE_NOTE} from '../actions/note_actions';
-import {RECEIVE_TAG} from '../actions/tag_actions';
+import {RECEIVE_TAG, CLEAR_TAG} from '../actions/tag_actions';
 import {merge} from 'lodash';
 
 export default (state = {}, action ) => {
@@ -15,6 +15,8 @@ export default (state = {}, action ) => {
       return merge([],state,{ currentNote: action.note.id });
     case RECEIVE_TAG:
       return merge([],state,{ currentTag: action.tag.id });
+    case CLEAR_TAG:
+      return merge([],state,{ currentTag: null});
     default:
     return state;
   }

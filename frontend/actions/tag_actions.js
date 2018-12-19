@@ -3,7 +3,7 @@ import * as TagAPIUtil from '../util/tag_api_util';
 export const RECEIVE_TAG = "RECEIVE_TAG";
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 export const REMOVE_TAG = "REMOVE_TAG";
-
+export const CLEAR_TAG = "CLEAR_TAG";
 
 
 
@@ -25,6 +25,12 @@ export const removeTag = (tagId) => {
   return {
     type: REMOVE_TAG,
     tagId,
+  };
+};
+
+export const clearTag = () => {
+  return {
+    type:CLEAR_TAG,
   };
 };
 
@@ -60,4 +66,8 @@ export const deleteTag = (id) => dispatch => {
 
 export const fetchArray = (results,query) => dispatch => {
   return dispatch(receiveArray(results,query));
-}
+};
+
+export const emptyTag = () => dispatch => {
+  return dispatch(clearTag());
+};

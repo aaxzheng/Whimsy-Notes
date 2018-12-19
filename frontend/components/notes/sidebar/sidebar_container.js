@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {logout} from '../../../actions/session_actions';
 import {fetchNotes, fetchNote, fetchArray, createNote} from '../../../actions/note_actions';
 import {fetchNotebooks, fetchNotebook} from '../../../actions/notebook_actions';
-import {fetchTags} from '../../../actions/tag_actions';
+import {fetchTags,createTag} from '../../../actions/tag_actions';
 import {dropdownReveal} from '../../../util/app_util';
 
 const msp = (state) => {
@@ -29,6 +29,7 @@ const mdp = (dispatch) => {
     createNote: (notebookId,note) => dispatch(createNote(notebookId,note)),
     fetchArray: (obj,array,query) => dispatch(fetchArray(obj,array,query)),
     fetchTags: () => dispatch(fetchTags()),
+    createTag: (tag) => dispatch(createTag(tag)),
     dropdownReveal: dropdownReveal,
   };
 };
