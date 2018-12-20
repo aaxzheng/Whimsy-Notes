@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Editor from './editor';
 import {fetchNote, updateNote,deleteNote,fetchNotes,createNote} from '../../../actions/note_actions';
+import {createTag} from '../../../actions/tag_actions';
 
 const msp = (state,ownProps) => {
   let notebookId = null;
@@ -37,6 +38,7 @@ const mdp = dispatch => {
     deleteNote: (id) => dispatch(deleteNote(id)),
     fetchNotes: () => dispatch(fetchNotes()),
     createNote: (notebookId,note) => dispatch(createNote(notebookId,note)),
+    createTag: (tag) => dispatch(createTag(tag)),
   }
 }
 
