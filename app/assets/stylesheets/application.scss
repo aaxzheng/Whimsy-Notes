@@ -657,6 +657,61 @@
   flex-shrink: 0;
   margin: 0 10px 0 15px;
 }
+
+.edit-tag-body {
+  display: inline-flex;
+  align-items: center;
+  line-height: 24px;
+  // margin-left: -10px;
+  padding: 0 10px;
+  border-radius:12px;
+  background-color: #f0f1f1;
+  margin-left: 5px;
+  font-family: "Monoserrat",sans-serif;
+  font-size: 12px;
+  color:#666;
+}
+
+.edit-body-tag-name {
+  color:#666;
+  text-decoration: none;
+  max-width: 310px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-body-tag-name:visited {
+  color:#666;
+  text-decoration: none;
+}
+
+.edit-tag-arrow {
+  fill:#a6a6a6;
+}
+
+.new-tag-maker {
+    background: transparent;
+    border: 0;
+    font-weight: 400;
+    outline: none;
+    min-width: 150px;
+}
+
+.tag-input {
+  width:100%;
+  box-sizing: content-box;
+  outline:0;
+  position:relative;
+  min-width: 100px;
+  border:none;
+  margin-left:5px;
+}
+
+#edit-tags {
+  font-size: 13px;
+  color: #777;
+}
+
 //////////////////////////////////////
 
 .tags-index {
