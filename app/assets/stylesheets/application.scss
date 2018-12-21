@@ -658,6 +658,11 @@
   margin: 0 10px 0 15px;
 }
 
+.fill-svg-hover:hover {
+  fill:#b6b6b6;
+}
+
+
 .edit-tag-body {
   display: inline-flex;
   align-items: center;
@@ -689,6 +694,7 @@
   fill:#a6a6a6;
 }
 
+
 .new-tag-maker {
     background: transparent;
     border: 0;
@@ -715,10 +721,23 @@
 .submitBtn {
   display:none;
 }
+
+#make-new-tag-btn {
+  border:none;
+  background: none !important;
+  outline:none;
+  box-shadow: none;
+}
+
+.edit-tag-container {
+  display:flex;
+  overflow-x: scroll;
+  position:relative;
+}
 //////////////////////////////////////
 
 .tags-index {
-  padding: 25px 0;
+  padding: 25px 10px;
   overflow-y: scroll;
 }
 
