@@ -1,6 +1,8 @@
 import React from 'react';
 import CreateNotebookFormContainer from './create_notebook_container';
 import EditNotebookFormContainer from './edit_notebook_container';
+import MoveNoteContainer from '../notes/textbox/move_modal_container';
+
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -13,6 +15,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'editNb':
       component = <EditNotebookFormContainer />;
+      break;
+    case 'moveNote':
+      component = <MoveNoteContainer />;
       break;
     default:
       return null;

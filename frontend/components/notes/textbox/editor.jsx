@@ -28,7 +28,8 @@ class Editor extends React.Component {
     this.updateState = this.updateState.bind(this);
     this.createNewTag = this.createNewTag.bind(this);
     this.setTagName = this.setTagName.bind(this);
-    }
+    this.moveModal = this.moveModal.bind(this);
+  }
 
 
   dropdownReveal() {
@@ -64,7 +65,6 @@ class Editor extends React.Component {
 
   removeNote() {
       this.setState({trashed: !this.state.trashed},this.updateState);
-
   }
 
   componentDidMount() {
@@ -98,6 +98,10 @@ class Editor extends React.Component {
     this.timeoutId = setTimeout(() => this.updateState(),1500);
   }
 
+  moveModal() {
+    this.props.openModal("moveNote");
+  }
+
   componentDidUpdate(oldProps) {
     if(oldProps.note.id !== this.props.note.id) {
       this.setState(merge({},this.props.note));
@@ -116,6 +120,12 @@ class Editor extends React.Component {
 
   render() {
     let tags;
+    let trashState = "Delete Note";
+
+    if (this.props.note.trashed === true) {
+      trashState = "Restore Note";
+    }
+
     if (this.props.tag.length > 0) {
         tags = this.props.tag.map(tag => {
           return (
@@ -133,9 +143,9 @@ class Editor extends React.Component {
         <div className="quill-dropdown-div">
           <div id="quillDropdownBox" ref={this.node} className="quill-dropdown">
             <ul  className="quill-dropdown-items">
-              <li className="quill-dropdown-actions ">Move to...</li>
+              <li onClick={this.moveModal} className="quill-dropdown-actions ">Move to...</li>
               <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
-              <li  className="quill-dropdown-actions"><Link onClick={this.removeNote} className="quill-drop-actions-link" to="/test/index/editor">Delete note</Link></li>
+              <li  className="quill-dropdown-actions"><span onClick={this.removeNote} className="quill-drop-actions-link" >{trashState}</span></li>
             </ul>
           </div>
         </div>
@@ -161,7 +171,6 @@ class Editor extends React.Component {
 
             </div>
             <div className="quill-header-right">
-              <button className="header-share-btn">Share</button>
               <svg onFocus={this.dropdownReveal} tabIndex="0" onBlur={this.dropdownHide}  width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="dot-dropdown" ><path fill="#7a8083" d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" ></path></svg>
             </div>
           </div>
