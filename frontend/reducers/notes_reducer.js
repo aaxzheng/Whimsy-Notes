@@ -13,7 +13,6 @@ export default (state = {}, action) => {
       delete newState[action.noteId];
       return newState;
     case REMOVE_TRASH:
-      debugger
       const nuState = merge({},action.trash);
       return nuState;
     default:
