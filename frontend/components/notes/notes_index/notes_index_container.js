@@ -8,7 +8,6 @@ const msp = (state,ownProps) => {
   let trash = false
   switch(state.entities.results.obj) {
     case "trash":
-    // debugger;
       notes = Object.values(state.entities.notes);
       trash = true;
       break;
