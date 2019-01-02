@@ -39,7 +39,7 @@ class CreateNotebookForm extends React.Component {
               <div className="form-bot-placeholder"></div>
               <div className="form-bot-placeholder">
                 <span onClick={this.props.closeModal} className="form-bot-cancel">Cancel</span>
-                <button onClick={this.newNotebook} className="form-bot-submit">Continue</button>
+                <button disabled={!this.state.title} onClick={this.newNotebook} className="form-bot-submit">Continue</button>
               </div>
             </div>
             <svg onClick={this.props.closeModal} width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" className="close-modal"><path id="hover-darken" fill="#b3b3b3" d="M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"></path></svg>
