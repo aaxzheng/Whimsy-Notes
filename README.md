@@ -37,7 +37,6 @@ The route points at a method defined in the controller that handles the removal 
     
     def empty_trash
     @notes = current_user.notes.where(trashed: true)
-     # @tags = @note.tags
      @notes.each do |note|
        note.destroy
      end
