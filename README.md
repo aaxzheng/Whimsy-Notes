@@ -23,16 +23,17 @@ The ability to create, read, update and destroy notes, and to certain extents no
 ## Code Snippets
 Trash is collected and removed utilizing a custom route that grabs all notes with a specified property and deletes them one at a time.
   
-   
+ ``` ruby
+ 
      namespace :api, defaults: { format: :json } do
      delete '/notes/deleted', to: 'notes#empty_trash'
      resources :users, only: [:create]
      resource :session, only: [:create, :destroy]
-
+```
 
 The route points at a method defined in the controller that handles the removal of the files.
 
-  
+``` ruby  
     
     def empty_trash
     @notes = current_user.notes.where(trashed: true)
@@ -43,9 +44,9 @@ The route points at a method defined in the controller that handles the removal 
      @notes = current_user.notes.where(trashed: false)
      render "api/notes/index"
      end
-  
+```  
 Tags are organized using a small trick to separate the tags by first letter.
-    
+``` javascript    
       const tags = this.props.tags.slice(0);
       let sorted = tags.sort((a,b) => a.tag.toLowerCase().localeCompare(b.tag.toLowerCase()));
       const lists = [];
@@ -62,10 +63,11 @@ Tags are organized using a small trick to separate the tags by first letter.
       }
       lists.push(category);
     }
+```
 This method allows each tag to compare its first character with the first tag's character (the first tag is shifted off so the array is reduced each iteration.) and organized into unique arrays for tags that share the same characters. 
 
 An important feature of this note-taking application is how the index determines which notes to display. This is accomplished by making the index act as a filter. 
-
+``` javascript
       const msp = (state,ownProps) => {
     let notes;
     let trash = false
@@ -85,7 +87,7 @@ An important feature of this note-taking application is how the index determines
         notes = Object.values(state.entities.notes);
         break;
     }
-    
+```    
 The cases in the index container will dictate what notes will appear in the props. Additional modifiers are added as necessary to the props for special cases such as when the user presses the trash button or submits a search request. If no inputs are given, the index will default to displaying all notes.
 
 ## Future Features 
