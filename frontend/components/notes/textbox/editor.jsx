@@ -13,7 +13,7 @@ const modules = {toolbar: [
   [{ 'color': [] },'bold','italic','underline','strike', {'background': [] },'code-block'],
   [{'list':'bullet'},{'list':'ordered'}],
   [{'script': 'super'},{'script': 'sub'}],
-  [{ 'align': []}],
+  [{ 'align': []}]
 ]};
 
 class Editor extends React.Component {

@@ -7,7 +7,7 @@ class NotesIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = merge({},this.props)
-    // debugger;
+    this.sendNote = this.sendNote.bind(this);
   }
 
 
@@ -46,15 +46,14 @@ class NotesIndexItem extends React.Component {
   }
 
   sendNote() {
-    clearTimeout(this.timeoutId);
-    this.timeoutId = setTimeout(this.props.fetchNote(this.props.note.id),5000);
+    this.props.fetchNote(this.props.note.id);
   }
 
   render() {
     const title = this.props.note.title || "Untitled";
 
     return (
-      <Link onClick={this.sendNote.bind(this)} to="/test/index/editor" className="index-item">
+      <Link onClick={this.sendNote} to="/test/index/editor" className="index-item">
         <div className="item-name">
           <p className="item-name-word">{title}</p>
         </div>
