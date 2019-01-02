@@ -19,7 +19,7 @@ const modules = {toolbar: [
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {body:this.props.note.body,title:this.props.note.title,notebook_id: this.props.note.notebook_id,preview: this.props.note.preview, trashed: this.props.note.trashed, tagInput: ""}
+    this.state = {body:this.props.note.body,title:this.props.note.title,notebook_id: this.props.note.notebook_id,preview: this.props.note.preview, trashed: this.props.note.trashed, favorite: this.props.note.favorite, tagInput: ""}
     this.handleChange = this.handleChange.bind(this);
     this.removeNote = this.removeNote.bind(this);
     this.node = React.createRef();
@@ -29,6 +29,7 @@ class Editor extends React.Component {
     this.createNewTag = this.createNewTag.bind(this);
     this.setTagName = this.setTagName.bind(this);
     this.moveModal = this.moveModal.bind(this);
+    this.addShortcut = this.addShortcut.bind(this);
   }
 
 
@@ -65,6 +66,10 @@ class Editor extends React.Component {
 
   removeNote() {
       this.setState({trashed: !this.state.trashed},this.updateState);
+  }
+
+  addShortcut() {
+      this.setState({favorite: !this.state.favorite},this.updateState);
   }
 
   componentDidMount() {
@@ -121,7 +126,11 @@ class Editor extends React.Component {
   render() {
     let tags;
     let trashState = "Delete Note";
+    let shortcut = "Add shortcut";
 
+    if (this.props.note.favorite === true) {
+      shortcut = "Remove shortcut";
+    }
     if (this.props.note.trashed === true) {
       trashState = "Restore Note";
     }
@@ -145,6 +154,7 @@ class Editor extends React.Component {
             <ul  className="quill-dropdown-items">
               <li onClick={this.moveModal} className="quill-dropdown-actions ">Move to...</li>
               <li onClick={this.dupNote} className="quill-dropdown-actions ">Duplicate note</li>
+              <li onClick={this.addShortcut} className="quill-dropdown-actions">{shortcut}</li>
               <li  className="quill-dropdown-actions"><span onClick={this.removeNote} className="quill-drop-actions-link" >{trashState}</span></li>
             </ul>
           </div>
