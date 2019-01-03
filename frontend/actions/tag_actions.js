@@ -4,7 +4,7 @@ export const RECEIVE_TAG = "RECEIVE_TAG";
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 export const REMOVE_TAG = "REMOVE_TAG";
 export const CLEAR_TAG = "CLEAR_TAG";
-
+export const REMOVE_TAG_NOTE = "REMOVE_TAG_NOTE";
 
 
 export const receiveTag = (tag) => {
@@ -33,6 +33,14 @@ export const clearTag = () => {
     type:CLEAR_TAG,
   };
 };
+
+export const removeTagNote = (id,noteId) => {
+  return {
+    type: REMOVE_TAG_NOTE,
+    id,
+    noteId,
+  }
+}
 
 export const fetchTag = (id) => dispatch => {
   return TagAPIUtil.fetchTag(id).then((resp)=> {
@@ -70,4 +78,10 @@ export const fetchArray = (results,query) => dispatch => {
 
 export const emptyTag = () => dispatch => {
   return dispatch(clearTag());
+};
+
+export const deleteTagNote = (id,noteId) => dispatch => {
+  return TagAPIUtil.deleteTagNote(id,noteId).then((resp) => {
+    dispatch(removeTagNote(resp));
+  });
 };

@@ -35,6 +35,12 @@ class Api::TagsController < ApplicationController
      render "api/tags/show"
   end
 
+  def remove_tag_note
+    @tag = current_user.tags.find(params[:id])
+    @note = @tag.tag_notes.find_by_note_id(params[:note_id])
+    @note.destroy
+    render "api/tags/fragment"
+  end
   private
 
   def tag_params

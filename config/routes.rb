@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     namespace :api, defaults: { format: :json } do
       delete '/notes/deleted', to: 'notes#empty_trash'
+      delete '/tagnotes/remove', to: 'tags#remove_tag_note'
       resources :users, only: [:create]
       resource :session, only: [:create, :destroy]
       resources :notebooks do

@@ -675,6 +675,7 @@
   font-family: "Monoserrat",sans-serif;
   font-size: 12px;
   color:#666;
+  max-height: 25px;
 }
 
 .edit-body-tag-name {
@@ -733,6 +734,13 @@
   display:flex;
   // overflow-x: scroll;
   position:relative;
+}
+
+.edit-tag-drop {
+  // display:none;
+  z-index:1000;
+  position: fixed;
+  bottom:25px;
 }
 //////////////////////////////////////
 

@@ -1,4 +1,4 @@
-import {RECEIVE_TAG, RECEIVE_TAGS, REMOVE_TAG} from "../actions/tag_actions";
+import {RECEIVE_TAG, RECEIVE_TAGS, REMOVE_TAG, REMOVE_TAG_NOTE} from "../actions/tag_actions";
 import {merge} from 'lodash';
 
 export default (state = {}, action) => {

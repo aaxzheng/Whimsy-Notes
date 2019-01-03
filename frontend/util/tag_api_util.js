@@ -34,3 +34,11 @@ export const createTag = (tag) => {
     data: { tag },
   });
 }
+
+export const deleteTagNote = (id,note_id) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/tagnotes/remove`,
+    data: {id,note_id}
+  })
+}

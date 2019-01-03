@@ -23,8 +23,8 @@ const App = () => (
       <div className="note-app-right">
         <ProtectedRoute path="/test/index" component={NotesIndexContainer}/>
           <ProtectedRoute path="/test/trash" component={NotesIndexContainer}/>
-        <ProtectedRoute exact path="/test/index/editor" component={TextEditorContainer} />
-        <ProtectedRoute exact path="/test/editor" component={TextEditorContainer} />  
+        <ProtectedRoute path="/test/index/editor" component={TextEditorContainer} />
+        <ProtectedRoute exact path="/test/editor" component={TextEditorContainer} />
       </div>
       <ProtectedRoute path="/test/notebooks" component={NotebookIndexContainer}/>
       <ProtectedRoute path="/test/tags" component={TagsIndexContainer}/>

@@ -2,6 +2,7 @@ import ReactQuill from "react-quill";
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {merge} from 'lodash';
+import TagObject from './editor_tag';
 
 const Font = Quill.import('formats/font');
 Font.whitelist= ['ubuntu','sans-serif','serif','raleway','monospace','monoserrat'];
@@ -138,12 +139,7 @@ class Editor extends React.Component {
     if (this.props.tag.length > 0) {
         tags = this.props.tag.map(tag => {
           return (
-            <div key={`${tag.id}edit`} className="edit-tag-body">
-              <Link to="/test/index/editor"  className="edit-body-tag-name">{tag.tag}</Link>
-              <div  className="tag-body-btn" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" ><path className="edit-tag-arrow" fill="black" d="M7 2L4 5 1 2"></path></svg>
-              </div>
-            </div>
+            <TagObject tag={tag} deleteTagNote={this.props.deleteTagNote} note={this.props.note}/>              
           );
         });
       }
