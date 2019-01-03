@@ -22,7 +22,7 @@ class MoveNoteModal extends React.Component {
     let currentNb = this.state.notebook.id;
     let options = this.props.notebooks.map(notebook => {
        return (
-         <option value= {notebook.id} key= {notebook.id}>{notebook.title}</option>
+         <option value= {notebook.id} key={notebook.id}>{notebook.title}</option>
        )
      })
       return (

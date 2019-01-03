@@ -95,8 +95,8 @@ class SideBar extends React.Component {
 
     quickNotes = shortcuts.map((note,idx) => {
       return (
-        <div>
-          <Link onClick={() => this.showNote(note)} to="/test/editor" key={idx} className="notebook-item mod-hover">
+        <div key={idx}>
+          <Link onClick={() => this.showNote(note)} to="/test/editor"  className="notebook-item mod-hover">
             <svg xmlns="http://www.w3.org/2000/svg"  width="14" height="14" viewBox="0 0 14 14" className="notebook-icon" fill="#ccc"><path id="31a" d="M9 13H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v7l-3 3zm0-1.457L10.543 10H9v1.543zM10 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4V9h3V3a1 1 0 0 0-1-1zM5 6h4v1H5V6zm0-2h4v1H5V4zm2 5H5V8h2v1z"></path></svg>
             <span className="notebook-title">{note.title}</span>
           </Link>
@@ -106,8 +106,8 @@ class SideBar extends React.Component {
 
     const titles = notebooks.map((notebook,idx) => {
       return (
-        <div>
-          <Link onClick={() => this.showNotebookNotes(notebook)} to="/test/index/" key={idx} className="notebook-item mod-hover">
+        <div key={idx}>
+          <Link onClick={() => this.showNotebookNotes(notebook)} to="/test/index/"  className="notebook-item mod-hover">
             <svg xmlns="http://www.w3.org/2000/svg" className="notebook-icon" fill="#ccc" width="14" height="14" viewBox="0 0 14 14" ><path id="31a" d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"></path></svg>
             <span className="notebook-title">{notebook.title}</span>
           </Link>

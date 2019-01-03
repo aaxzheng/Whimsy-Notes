@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class TagsIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    
+
   }
 
   dropdownHide() {
@@ -32,8 +32,8 @@ class TagsIndexItem extends React.Component {
     const letter = this.props.tags[0].tag[0].toUpperCase();
     const items = this.props.tags.map((tag,idx) => {
       return (
-      <li className="tag-item">
-        <div className="tag-body">
+      <li key={idx} className="tag-item">
+        <div key={idx} className="tag-body">
           <Link to="/test/index" onClick={() => this.sendData(tag)} className="body-tag-name">{tag.tag}</Link>
           <span className="tag-item-num">({tag.notes.length})</span>
           <div onFocus={this.dropdownReveal(tag.id)} tabIndex="0" onBlur={this.dropdownHide} className="tag-body-btn" >
