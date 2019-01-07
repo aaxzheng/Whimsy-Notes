@@ -8,7 +8,7 @@ class TagsIndexItem extends React.Component {
   }
 
   dropdownHide() {
-    let obj = document.getElementsByClassName("show-tag-dropdown")[0];
+    let obj = document.getElementsByactiveClassName("show-tag-dropdown")[0];
     if (obj) {
       setTimeout(() => obj.classList.toggle("show-tag-dropdown"),300);
     }

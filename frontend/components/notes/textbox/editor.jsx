@@ -139,7 +139,7 @@ class Editor extends React.Component {
     if (this.props.tag.length > 0) {
         tags = this.props.tag.map(tag => {
           return (
-            <TagObject tag={tag} deleteTagNote={this.props.deleteTagNote} note={this.props.note}/>              
+            <TagObject tag={tag} deleteTagNote={this.props.deleteTagNote} note={this.props.note} fetchTag={this.props.fetchTag}/>              
           );
         });
       }

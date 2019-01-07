@@ -33,7 +33,7 @@ class TagsIndex extends React.Component {
 
 
     const indexItems = lists.map((tags,idx) => {return (
-      <TagsIndexItem key={idx} tags={tags} deleteTag={this.props.deleteTag} fetchTag={this.props.fetchTag}/>
+      <TagsIndexItem key={idx} tags={tags} deleteTag={this.props.deleteTag} fetchTag={this.props.fetchTag} fetchArray={this.props.fetchArray}/>
     )})
 
     return (

@@ -17,10 +17,10 @@ export default (state = {}, action) => {
       const nuState = merge({},action.trash);
       return nuState;
     case REMOVE_TAG_NOTE:
-    const muState = merge({},state);
-    let arr = muState[action.id.noteId].tag_ids.filter(ele => ele != action.id.id);
-    muState[action.id.noteId].tag_ids = arr;
-    return muState;
+      const muState = merge({},state);
+      let arr = muState[action.id.noteId].tag_ids.filter(ele => ele != action.id.id);
+      muState[action.id.noteId].tag_ids = arr;
+      return muState;
     default:
       return state;
   }

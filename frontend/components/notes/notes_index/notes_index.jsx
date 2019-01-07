@@ -15,6 +15,9 @@ class NotesIndex extends React.Component {
     if (oldProps.notes !== this.props.notes) {
       this.setState({notes: this.props.notes});
     }
+    if (oldProps.tag !== this.props.tag) {
+      this.setState({tag: this.props.tag});
+    }
   }
 
   removeTag() {
