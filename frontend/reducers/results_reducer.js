@@ -8,7 +8,7 @@ export default (state = {}, action ) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ARRAY:
-      return merge([],state,{obj: action.obj, array: action.array, query: action.query});
+      return merge([],{obj: action.obj, array: action.array, query: action.query});
     case RECEIVE_NOTEBOOK:
       return merge([],state,{ currentNb: action.notebook.id });
     case RECEIVE_NOTE:
