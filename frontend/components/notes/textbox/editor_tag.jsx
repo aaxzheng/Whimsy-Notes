@@ -7,7 +7,6 @@ class TagObject extends React.Component {
 
   sendData(tag) {
     this.props.fetchTag(tag.id);
-    // document.getElementById(`${this.props.tag.id}`).classList.toggle("show-tag-dropdown");
   }
 
   showDropdown() {
@@ -16,7 +15,6 @@ class TagObject extends React.Component {
 
   removeNote(note) {
     this.props.deleteTagNote(this.props.tag.id,note.id);
-    // document.getElementById(`${this.props.tag.id}`).classList.toggle("show-tag-dropdown");
   }
 
   fillArrow() {
