@@ -25,7 +25,7 @@ const msp = (state,ownProps) => {
 
 
   let tag = null;
-  if (state.entities.results.currentTag) {
+  if (state.entities.results.currentTag && trash === false) {
     tag = state.entities.tags[state.entities.results.currentTag];
   }
 
